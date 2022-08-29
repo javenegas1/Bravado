@@ -6,7 +6,7 @@ require('./db.connection')
 //app.use(express.static('public'))
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
-
+app.use('/public', express.static('public'));
 //controller setup
 const mainController = require('./controllers/main_controller')
 app.use('/bravado', mainController)

@@ -1,0 +1,51 @@
+body{
+    background-color:black;
+    color:aliceblue;
+}
+.nav {
+    margin: 5px;
+    text-align: center;
+}
+a {
+    margin:10px;
+    font-size: 20px;
+}
+h1 {
+    font-size: 22px;
+    font-family:'Times New Roman', Times, serif'
+}
+.imgs {
+    text-align: center;
+    margin: 10px;
+}
+.title {
+    font-size: 30px;
+    text-decoration:underline;
+}
+.about {
+    display:flex;
+}
+
+.about img {
+    display: block;
+    margin-left: auto;
+    }
+.about p {
+    font-size: 20px;
+
+    }
+.title2 {
+    margin:30px;
+    text-align: right;
+    font-size: 30px;
+    text-decoration:underline;
+}
+.goal {
+    display:flex;
+   
+}
+.goal p{
+font-size: 30px;
+margin-left: 50px;
+
+}
