@@ -20,5 +20,13 @@
     <h1><%= category.charAt(0).toUpperCase() + category.slice(1) %> Reviews</h1>
     <h2>Help with interviews in the Tech Space</h2>
 
+    <main class="container">
+        <div>
+            <% for( let i = 0; i<findReview.length; i++){ %>
+                <% const review = findReview[i] %>
+                <a href="/bravado/<%= category %>/<%= findReview[i].id %>"><%= findReview[i].user %> <%= findReview[i].title %></a>
+            <% } %> 
+        </div>
+    </main>
 </body>
 </html>
