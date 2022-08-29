@@ -1,19 +1,31 @@
 const mongoose = require('mongoose');
 
-const postSchema = new mongoose.Schema ({
+const reviewSchema = new mongoose.Schema ({
     user:{type: String, required:true},
+    title:{type: String, required:true},
     post:{type: String, required:true},
-    timeStamp: Number,
+    category:{type: String, required: true},
+    company: String,
     image: String,
-    comments: [{type: Comment}]
+    comments: [{type: String}]
 });
 
-const Comment = {
-    user: {type: String, required:true},
-    text:{type: String, required:true},
-    timeStamp: Number,
-    likeCounter: Number
+class Post {
+    constructor(user, text, timestamp, likeCounter){
+        this.user = user
+        this.text = text
+        //this.timestamp = timestamp
+        this.likeCounter = likeCounter
+    }
+
+    getUser(){
+        return this.user
+    }
+
+    getText(){
+        return this.text
+    }
 }
 
-
-
+const Review = mongoose.model('Review', reviewSchema)
+module.exports = Review

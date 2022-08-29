@@ -1,0 +1,93 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		    <link rel="stylesheet" href="/styles/main.css" />
+        <script src="/scripts/main.js" defer></script>
+
+        <title>Submit New Post</title>
+    </head>
+    <body>  
+	
+				<nav class="navbar">
+            <div>
+                <a href="/"> Home </a>
+            </div>
+        </nav>
+
+        <section>
+            <div>
+                <h1 class="title">Submit Post</h1>
+            </div>
+        </section>
+
+        <main class="container">
+
+	      <form action="/cars" method="POST">
+
+            <label for="user">Username</label>
+            <div>
+                <input
+                  type="text"
+                  placeholder="Default"
+                  name="user"
+                  id="user"
+                />
+            </div>
+
+            <label for="title">Title</label>
+            <div>
+                <input
+                  type="text"
+                  placeholder="Default"
+                  name="title"
+                  id="title"
+                />
+            </div>
+
+            <label for="post">Let the People Know</label>
+            <div>
+                  <textarea
+                    type="text"
+                    placeholder="Say Something!"
+                    name="post"
+                    id="post"
+                  ></textarea>
+            </div>
+
+            <label for="category">Pick Category</label>
+            <div>
+                <input
+                  type="text"
+                  placeholder="Tech"
+                  name="category"
+                  id="category"
+                />
+            </div>
+
+            <label for="company">Company</label>
+            <div>
+                <input
+                  type="company"
+                  placeholder="Google"
+                  name="company"
+                  id="company"
+                />
+            </div>
+
+            <label for="image">Image</label>
+            <div>
+                <input
+                  type="text"
+                  placeholder="image.jpg (not necessary)"
+                  name="image"
+                  id="image"
+                />
+            </div>
+
+		     <button class="button is-info">Submit</button>
+	     </form>
+     </main>
+	</body>
+</html>

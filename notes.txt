@@ -1,0 +1,8 @@
+    <!-- <main class="container">
+        <div>
+            <% if(category == 'Tech'){for( let i = 0; i<techReview.length; i++){ %>
+                <% const review = techReview[i] %>
+                <a href="/bravado/<%= techReview._id %>"><%= techReview.user %> <%= techReview.title %></a>
+            <% }} %> 
+        </div>
+    </main> -->
