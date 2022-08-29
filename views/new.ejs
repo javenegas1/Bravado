@@ -7,10 +7,16 @@
         <script src="/scripts/main.js" defer></script>
 
         <title>Submit New Post</title>
+        <style>
+            body{
+                background-color: black;
+                color:aliceblue;
+            }
+        </style>
     </head>
     <body>  
 	
-				<nav class="navbar">
+		<nav class="navbar">
             <div>
                 <a href="/"> Home </a>
             </div>
@@ -18,13 +24,13 @@
 
         <section>
             <div>
-                <h1 class="title">Submit Post</h1>
+                <h1 class="title">Submit a Post</h1>
             </div>
         </section>
 
         <main class="container">
 
-	      <form action="/cars" method="POST">
+	      <form action="/bravado" method="POST">
 
             <label for="user">Username</label>
             <div>
@@ -58,12 +64,11 @@
 
             <label for="category">Pick Category</label>
             <div>
-                <input
-                  type="text"
-                  placeholder="Tech"
-                  name="category"
-                  id="category"
-                />
+                <select name="category" id="category">
+                    <option value="tech">Tech</option>
+                    <option value="finance">Finance</option>
+                    <option value="general">General Advice</option>
+                </select>
             </div>
 
             <label for="company">Company</label>
