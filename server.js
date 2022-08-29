@@ -8,6 +8,8 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
 
 //controller setup
+const mainController = require('./controllers/main_controller')
+app.use('/bravado', mainController)
 
 app.get('/bravado', (req, res) =>{
     res.render('index.ejs')
