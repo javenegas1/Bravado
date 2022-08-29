@@ -10,7 +10,7 @@ app.set('view engine', 'ejs')
 //controller setup
 
 app.get('/bravado', (req, res) =>{
-    res.send('Bravado')
+    res.render('index.ejs')
 })
 
 app.get('/', (req, res) => {
