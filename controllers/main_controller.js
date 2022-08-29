@@ -6,6 +6,7 @@ router.use(express.urlencoded({ extended: false }));
 
 const Review = require('../models/bravado_schema')
 
+
 //new submissions
 router.get('/newSubmission', (req, res) => {
     res.render('new.ejs')
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
 })
 
 //display submissions by category
-//tech
+//category
 router.get('/:category', async (req, res) => {
     try {
         const findReview = await Review.find({});
@@ -34,6 +35,7 @@ router.get('/:category', async (req, res) => {
     } catch (error) {
         error = 'Could not Post'
         console.log(error)
+        res.send(error)
     }
     // const context = {category: req.params.category}
     // res.render('category.ejs', context)

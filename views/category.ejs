@@ -13,21 +13,12 @@
             <a href="/" style="background-color:crimson; color:azure"> Home </a> |
             <a href="/bravado/newSubmission" style="background-color:crimson; color:azure"> Submit Yours </a> |
             <a href="/bravado/tech" style="background-color:crimson; color:azure"> Tech </a> |
-            <a href="/bravado/finance/" style="background-color:crimson; color:azure"> Finance </a>
+            <a href="/bravado/finance" style="background-color:crimson; color:azure"> Finance </a>
         </div>
     </nav>
 
     <h1><%= category.charAt(0).toUpperCase() + category.slice(1) %> Reviews</h1>
     <h2>Help with interviews in the Tech Space</h2>
 
-    <main class="container">
-        <div>
-            <% for( let i = 0; i<findReview.length; i++){ %>
-                <% const review = findReview[i] %>
-                <% if(findReview.category = category){%>
-                <a href="/bravado/<%= techReview._id %>"><%= techReview.user %> <%= techReview.title %></a>
-            <% } %> 
-        </div>
-    </main>
 </body>
 </html>

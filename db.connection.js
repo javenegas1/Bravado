@@ -7,6 +7,7 @@ require('dotenv').config();
 
 // get the MongoDB URL from .env file
 const connectionStr = process.env.MONGO_KEY;
+console.log(connectionStr)
 
 mongoose.connect(connectionStr);
 
