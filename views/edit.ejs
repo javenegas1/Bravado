@@ -1,0 +1,68 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		    <link rel="stylesheet" href="/styles/main.css" />
+        <script src="/scripts/main.js" defer></script>
+
+        <title>Add Car Here</title>
+    </head>
+    <body>  
+
+				<nav class="navbar">
+            <div>
+                <a href="/bravado"> Home </a>
+            </div>
+        </nav>
+
+        <section>
+            <div>
+                <h1>Hello <%=userPost.user%>!</h1>
+            </div>
+        </section>
+
+        <form method="POST" action="/bravado/<%= userPost.category %>/<%= userPost.id %>?_method=PUT">
+
+            <p class="title">Edit your post below:</p>
+
+            <label>Title</label>
+            <div>
+              <input
+                class="input"
+                type="text"
+                placeholder="title"
+                name="title"
+                value="<%= userPost.title %> "
+              />
+            </div>
+          </div>
+          
+          <label>Post</label>
+          <div>
+            <textarea
+              type="text"
+              placeholder="Say Something!"
+              name="post"
+              id="post"
+            ><%= userPost.post %></textarea>
+            </div>
+          </div>
+        
+        <label>Category</label>
+        <div>
+            <select name="category" id="category">
+                <option value="tech">Tech</option>
+                <option value="finance">Finance</option>
+                <option value="general">General Advice</option>
+            </select>
+        </div>
+
+              <div>
+                 <input id="editBtn" type="submit" value="Edit Post">
+              </div>
+          </div>
+        </form>
+
+    </body>
+</html>

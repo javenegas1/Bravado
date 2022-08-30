@@ -26,6 +26,20 @@ router.post('/', async (req, res) => {
     }
 })
 
+//post comment
+// router.post('/', async (req, res) => {
+//     try{
+//         const createComment = await Review.create(req.body)
+//         console.log(createReview);
+  
+//         res.redirect("/");
+//     } catch (error){
+//         error = 'Could not Post'
+//         console.log(error)
+//         res.send(error)
+//     }
+// })
+
 //display submissions by category
 //category
 router.get('/:category', async (req, res) => {
@@ -44,7 +58,7 @@ router.get('/:category', async (req, res) => {
     // res.render('category.ejs', context)
   });
 
-//retrieves submissions
+//retrieves individual submissions
 router.get('/:category/:submissionId', async (req, res) => {
     try {
         const userSubmission = await Review.findById(req.params.submissionId)
@@ -60,7 +74,7 @@ router.get('/:category/:submissionId', async (req, res) => {
     }
 })
 
-//delete submission
+//deletes individual submission
 router.delete('/:category/:submissionId', async (req, res) => {
     try {
         const deletePost = await Review.findByIdAndDelete(req.params.submissionId);
@@ -71,5 +85,29 @@ router.delete('/:category/:submissionId', async (req, res) => {
         console.log(error)
     }
   })
+
+//Edit and Update individual submissions
+router.get('/:category/:submissionId/edit', async (req, res) => {
+    try {
+        const updatePost = await Review.findById(req.params.submissionId);
+        console.log(updatePost);
+        return res.render('edit.ejs', { userPost: updatePost })
+    } catch (error) {
+        error = 'Could not Post'
+        console.log(error)
+    }
+  })
+
+router.put('/:category/:submissionId', async (req, res) => {
+    try {
+        //const categoryBtn = document.getElementById('editBtn')
+        const updatePost = await Review.findByIdAndUpdate(req.params.submissionId, req.body);  
+        //console.log(categoryBtn);
+        return res.redirect(`/bravado/${updatePost.category}`);
+    } catch (error) {
+        error = 'Could not Post'
+        console.log(error)
+    }
+  });
 
 module.exports = router
