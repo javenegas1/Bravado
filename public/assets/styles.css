@@ -7,15 +7,24 @@ body{
 .logo{
     box-shadow: 2px 2px 3px red;
 }
+.nav {
+    display:flex;
+    justify-content: flex-start;
+    width:100%;
+    gap:1em;
+}
 
-.nav{
+.navbar{
+    border: 1px solid red;
     background-color:gainsboro;
     padding-top: 11px;
     padding-bottom: 11px;
     
+    
+    
 }
 .nav input[type=text] {
-    float: right;
+    margin-left:auto;
     margin-right: 10px;
     width: 175px;
     border: 1px solid black;
@@ -41,6 +50,15 @@ body{
 .nav a:active{
     background-color: crimson;
 }
+.carousel-inner {
+    max-height: 50vh;
+}
+.carousel-inner > .carousel-item > img {
+   width:100%;
+   height: auto;
+
+   
+  }
 
 h1 {
     font-size: 19px;
@@ -51,9 +69,7 @@ h1 {
     margin: 10px;
     
 }
-img {
-    border-radius: 10%;
-}
+
 .title {
     font-size: 30px;
     text-decoration:underline;
@@ -82,7 +98,7 @@ img {
    
 }
 .goal p{
-font-size: 30px;
+font-size: 20px;
 margin-left: 50px;
 font-family: 'Poppins', sans-serif;
 
