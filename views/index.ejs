@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include( 'partials/head.ejs' ,)  %>
-    <body > 
+    <%- include( 'partials/head.ejs')  %>
+    <body> 
 
-        <%- include( 'partials/nav.ejs' ,)  %>
-
+        <%- include( 'partials/nav.ejs' )  %>
+   
+        
+        <div id="mySlideshow2" class="carousel slide mb-3" data-ride="carousel">
+        
+            <!-- Slideshow -->
+            <div class="carousel-inner" >
+            <div class="carousel-item active">
+            <img class="d-block w-100" src="https://imgur.com/6Git2ee.jpg"  >
+            </div>
+            <div class="carousel-item">
+            <img class="d-block w-100" src="https://imgur.com/Md3gMRt.jpg" >
+            </div>
+            <div class="carousel-item">
+            <img class="d-block w-100" src="https://imgur.com/Dgo44tE.jpg"  >
+            </div>
+            </div>
+            
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#mySlideshow2" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#mySlideshow2" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            </a>
+            
+            </div>
+            
 
         
-
-        <div class="imgs">
-           
-            <img src="https://imgur.com/6Git2ee.jpg" style="width: 180px; height: 150px; margin: 10px">             
-            <img src="https://imgur.com/Md3gMRt.jpg" style="width: 180px; height: 150px; margin: 10px"> 
-            <img src="https://imgur.com/Dgo44tE.jpg" style="width: 180px; height: 150px; margin: 10px"> 
-        </div>
 
         <section>
             <h2 class="title"> About Bravado </h2>
             <div class= "about">
                 
                 
-                <p>Founded in 1936, Bravado began as a club for aspiring professionals looking to rebound from the Great Depression. As times evolved and technology became omnipresent, 
-                    Bravado took the form of the website you see before you today! 
-                    Take advantage of what today's professionals have to offer in order to see yourself in a better light as well.</p> 
+                <p>Bravado is a company that started in early 1937. It was started by Michael Schwartzenberg as a company to help during the great depression. During this time getting jobs was a very difficult task, as such he decided he needed to find a solution. The area he decided to target was the interview process. 
+                    He knew that if you couldn’t get past the interview you could kiss that job goodbye. 
+                    He would start his planning phase and he would begin to create what is now known as bravado industries. Ever since Mr. Schwartzenberg’s passing in 1989, he would pass the torch to his daughter Andrea.
+                     Today she leads the company with the same goal in mind: help those inexperienced, or simply nervous, land their first job and knock that interview out of the park.
+                </p> 
                         <img src="https://imgur.com/pNi2ckh.jpg" style="width: 280px; height: 250px"> 
                    
                
@@ -38,9 +59,10 @@
             
             
 
-                <p>To get you hired!</p>
+                <p>Ever since the beginning, have always been the same: helping with that first interview. You’ve never been able to guarantee that you will get the job with our help, however, going in more prepared and knowing what to expect would greatly increase your odds. We use other users experiences to help you succeed. Users submit their experiences with the job and let others know what to expect. With this much information at your hands going in blind as a thing of the past. With a little bit of insider knowledge, your chances of getting a call back significantly increase. If you pass your first interview then we have done our job.</p>
                 
             </div>
         </section>
-    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>

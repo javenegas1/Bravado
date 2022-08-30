@@ -1,9 +1,9 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
-
+// const bootstrap = require('bootstrap')
 require('./db.connection')
-//app.use(express.static('public'))
+app.use(express.static('public'))
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
 app.use('/public', express.static('public'));
