@@ -1,66 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
-
-            <script src="/scripts/main.js" defer></script>
-
-        <title>Bravado</title>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
-            
-            .logo{
-                box-shadow: 2px 2px 3px red;
-            }
-
-            .nav{
-                background-color: gray;
-                padding-top: 11px;
-                padding-bottom: 11px;
-            }
-            .nav a{
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 11px;
-                padding-bottom: 11px;
-                background-color: gray;
-                text-decoration:solid;
-                color: azure;
-                font-family: 'Poppins', sans-serif;
-                text-shadow: 2px 2px 3px rgb(251, 4, 177);
-            }
-            .nav a:hover {
-                background-color: rgb(163, 48, 71);
-                text-transform: uppercase;
-                text-shadow: 2px 2px 3px rgb(251, 4, 177);
-            }
-            .nav a:active{
-                background-color: crimson;
-            }
-
-        </style>
-    </head>
+    <%- include( 'partials/head.ejs' ,)  %>
     <body > 
 
-        <div class="'logo">
-            <a href="/bravado"><img src="https://imgur.com/Igyoz1d.jpg" style="width: 120px; height: 120px;"></a>
-        </div>
+        <%- include( 'partials/nav.ejs' ,)  %>
 
-		<nav class="navbar">
-            <div class=" nav">
-                <a href="/bravado/"> Home </a>  
-                <a href="/bravado/newSubmission"> Post </a>
-                <a href="/bravado/tech/"> Tech </a>
-                <a href="/bravado/finance/"> Finance </a>
-            </div>
-        </nav>
-
-        <div>
-            <h1>Where Professionals Gather</h1>
-        </div>
+        
 
         <div class="imgs">
            

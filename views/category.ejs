@@ -5,17 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Auction</title>
-    <link rel="stylesheet" href="/styles/show/style.css">
+    <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <nav class="navbar">
-        <div>
-            <a href="/" style="background-color:crimson; color:azure"> Home </a> |
-            <a href="/bravado/newSubmission" style="background-color:crimson; color:azure"> Submit Yours </a> |
-            <a href="/bravado/tech" style="background-color:crimson; color:azure"> Tech </a> |
-            <a href="/bravado/finance" style="background-color:crimson; color:azure"> Finance </a>
-        </div>
-    </nav>
+    <%- include( 'partials/nav.ejs' ,)  %>
 
     <h1><%= category.charAt(0).toUpperCase() + category.slice(1) %> Reviews</h1>
     <h2>Help with interviews in the Tech Space</h2>
