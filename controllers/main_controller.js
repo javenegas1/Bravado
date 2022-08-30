@@ -30,8 +30,9 @@ router.post('/', async (req, res) => {
 //category
 router.get('/:category', async (req, res) => {
     try {
-        const findReview = await Review.find({});
-        const context = { findReview: findReview, category: req.params.category}
+        const sortCategory = req.params.category
+        const findReview = await Review.find({category: sortCategory});
+        const context = { findReview: findReview, category: sortCategory}
         console.log(findReview)
         return res.render('category.ejs', context);
     } catch (error) {
@@ -51,14 +52,24 @@ router.get('/:category/:submissionId', async (req, res) => {
         console.log(req.params.submissionId)
         //provides context for delete button as well
         const context = { userSubmission: userSubmission, id: userSubmission._id }
-        //res.render('show.ejs', context)
-        res.send('hello')
+        res.render('show.ejs', context)
+        //res.send('hello')
     } catch (error) {
         error = 'Could not Post'
         console.log(error)
     }
 })
 
-
+//delete submission
+router.delete('/:category/:submissionId', async (req, res) => {
+    try {
+        const deletePost = await Review.findByIdAndDelete(req.params.submissionId);
+        console.log(deletePost)
+        res.redirect('/bravado');
+    } catch(error) {
+        error = 'Could not Post'
+        console.log(error)
+    }
+  })
 
 module.exports = router
