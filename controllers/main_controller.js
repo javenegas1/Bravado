@@ -5,7 +5,6 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 const Review = require('../models/bravado_schema')
-//const Comment = require('../models/comment_schema')
 
 //new submissions
 router.get('/newSubmission', (req, res) => {
