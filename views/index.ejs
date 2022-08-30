@@ -30,9 +30,12 @@
             </a>
             
             </div>
-            
-
         
+        <section>
+            <% let randomQuote = quotes[Math.floor(Math.random() * (quotes.length-1))] %>
+            <p><%= randomQuote.quote %></p>
+            <p><%= randomQuote.speaker %></p>
+        </section>
 
         <section>
             <h2 class="title"> About Bravado </h2>

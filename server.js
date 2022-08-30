@@ -22,7 +22,7 @@ const mainController = require('./controllers/main_controller')
 app.use('/bravado', mainController)
 
 app.get('/bravado', (req, res) =>{
-    res.render('index.ejs', quotes)
+    res.render('index.ejs', {quotes: quotes})
 })
 
 app.get('/', (req, res) => {
