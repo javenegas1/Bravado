@@ -1,15 +1,8 @@
 body{
-    background-color:black;
-    color:aliceblue;
+    background-color:#fff4f4;
+    color:rgb(65, 65, 65);
 }
-.nav {
-    margin: 5px;
-    text-align: center;
-}
-a {
-    margin:10px;
-    font-size: 20px;
-}
+
 h1 {
     font-size: 22px;
     font-family:'Times New Roman', Times, serif'

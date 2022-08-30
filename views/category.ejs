@@ -22,8 +22,7 @@
 
     <main class="container">
         <div>
-            <% for( let i = 0; i<findReview.length; i++){ %>
-                <% const review = findReview[i] %>
+            <% for(let i = 0; i<findReview.length; i++){ %>
                 <a href="/bravado/<%= category %>/<%= findReview[i].id %>"><%= findReview[i].user %> <%= findReview[i].title %></a>
             <% } %> 
         </div>
