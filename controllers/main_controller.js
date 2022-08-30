@@ -6,7 +6,6 @@ router.use(express.urlencoded({ extended: false }));
 
 const Review = require('../models/bravado_schema')
 
-
 //new submissions
 router.get('/newSubmission', (req, res) => {
     res.render('new.ejs')
@@ -20,25 +19,11 @@ router.post('/', async (req, res) => {
   
         res.redirect("/");
     } catch (error){
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
         res.send(error)
     }
 })
-
-//post comment
-// router.post('/', async (req, res) => {
-//     try{
-//         const createComment = await Review.create(req.body)
-//         console.log(createReview);
-  
-//         res.redirect("/");
-//     } catch (error){
-//         error = 'Could not Post'
-//         console.log(error)
-//         res.send(error)
-//     }
-// })
 
 //display submissions by category
 //category
@@ -50,27 +35,55 @@ router.get('/:category', async (req, res) => {
         console.log(findReview)
         return res.render('category.ejs', context);
     } catch (error) {
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
         res.send(error)
     }
-    // const context = {category: req.params.category}
-    // res.render('category.ejs', context)
   });
 
 //retrieves individual submissions
 router.get('/:category/:submissionId', async (req, res) => {
     try {
         const userSubmission = await Review.findById(req.params.submissionId)
+        // console.log(comment.user)
         console.log(userSubmission);
-        console.log(req.params.submissionId)
         //provides context for delete button as well
         const context = { userSubmission: userSubmission, id: userSubmission._id }
         res.render('show.ejs', context)
         //res.send('hello')
     } catch (error) {
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
+    }
+})
+
+//new comments
+router.get('/:category/:submissionId/comment', (req, res) => {
+    const context = {category: req.params.category, submissionId: req.params.submissionId}
+    res.render('comment.ejs', context)
+})
+
+//post comments to page
+router.post('/:category/:submissionId', async (req, res) => {
+    try{
+        const userSubmission = await Review.findById(req.params.submissionId)
+        const comment = await userSubmission.comments.create(req.body)
+        console.log(req.body)
+        await Review.updateOne(
+            {_id: req.params.submissionId},
+            {$push: { comments: comment }}
+        )
+        console.log(comment)
+        
+        // redirect troubleshoot ----------->
+        // res.redirect(`/${userSubmission.category}/${userSubmission.id}`);
+        //res.redirect(`/${req.params.category}/${req.params.submissionId}`);
+        res.redirect('/')
+
+    } catch (error){
+        //error = 'Could not Post'
+        console.log(error)
+        res.send(error)
     }
 })
 
@@ -81,7 +94,7 @@ router.delete('/:category/:submissionId', async (req, res) => {
         console.log(deletePost)
         res.redirect('/bravado');
     } catch(error) {
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
     }
   })
@@ -93,7 +106,7 @@ router.get('/:category/:submissionId/edit', async (req, res) => {
         console.log(updatePost);
         return res.render('edit.ejs', { userPost: updatePost })
     } catch (error) {
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
     }
   })
@@ -105,7 +118,7 @@ router.put('/:category/:submissionId', async (req, res) => {
         //console.log(categoryBtn);
         return res.redirect(`/bravado/${updatePost.category}`);
     } catch (error) {
-        error = 'Could not Post'
+        //error = 'Could not Post'
         console.log(error)
     }
   });

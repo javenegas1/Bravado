@@ -6,3 +6,42 @@
             <% } %> 
         </div>
     </main>
+
+
+
+
+Consider comment.ejs with form to submit for comments that will post/put to show.ejs page
+similar to edit.ejs submission or new.ejs submission
+
+    <main class="container">
+        <ul>
+            <% for(let i = 0; i<userSubmission.comments.length; i++){ %>
+                <li><%= userSubmission.comments[i] %></li>
+            <% } %> 
+        </ul>
+    </main>
+
+            <!-- form for comments -->
+    <form action="/bravado" method="POST">
+
+        <label for="user">Username</label>
+        <div>
+            <input
+              type="text"
+              placeholder="Default"
+              name="user"
+              id="user"
+            />
+        </div>
+
+        <label for="post">Leave a Comment</label>
+        <div>
+              <textarea
+                type="text"
+                placeholder="Say Something!"
+                name="post"
+                id="post"
+              ></textarea>
+        </div>
+             <button class="button is-info">Comment</button>
+     </form>

@@ -13,6 +13,7 @@
             <a href="/"> Home </a> | 
             <a href="/bravado/newSubmission"> New Post </a> |
             <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> |
+            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Leave Comment </a> |
         </div>
     </nav>
 
@@ -34,11 +35,12 @@
     <main class="container">
         <ul>
             <% for(let i = 0; i<userSubmission.comments.length; i++){ %>
-                <li><%= userSubmission.comments[i] %></li>
+                <li><%= userSubmission.comments[i].post %></li>
             <% } %> 
         </ul>
     </main>
-        <!-- form for comments -->
+
+                    <!-- form for comments -->
     <form action="/bravado" method="POST">
 
         <label for="user">Username</label>
@@ -60,8 +62,8 @@
                 id="post"
               ></textarea>
         </div>
-
-         <button class="button is-info">Comment</button>
+             <button class="button is-info">Comment</button>
      </form>
+
 </body>
 </html>
