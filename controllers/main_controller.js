@@ -26,6 +26,20 @@ router.post('/', async (req, res) => {
     }
 })
 
+//post comment
+// router.post('/', async (req, res) => {
+//     try{
+//         const createComment = await Review.create(req.body)
+//         console.log(createReview);
+  
+//         res.redirect("/");
+//     } catch (error){
+//         error = 'Could not Post'
+//         console.log(error)
+//         res.send(error)
+//     }
+// })
+
 //display submissions by category
 //category
 router.get('/:category', async (req, res) => {
