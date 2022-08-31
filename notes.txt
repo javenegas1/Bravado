@@ -1,3 +1,6 @@
 npm install express-session connect-mongo
 
 ---for later, for establishing sessions and cookies for users that login
+
+
+ 

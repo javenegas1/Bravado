@@ -10,6 +10,10 @@ const Review = require('../models/bravado_schema')
 router.get('/newSubmission', (req, res) => {
     res.render('new.ejs')
 })
+//about us page 
+router.get('/about', (req,res) => {
+    res.render('about.ejs')
+})
 
 //posts to category
 router.post('/', async (req, res) => {
@@ -122,5 +126,6 @@ router.put('/:category/:submissionId', async (req, res) => {
         console.log(error)
     }
   });
+
 
 module.exports = router

@@ -1,12 +1,13 @@
+
+
+/* index / home page css */
 body{
     background-color:#ffffff;
     color:rgb(65, 65, 65);
     padding:0;
 }
 
-.logo{
-    box-shadow: 2px 2px 3px red;
-}
+
 .nav {
     display:flex;
     justify-content: flex-start;
@@ -60,57 +61,35 @@ body{
    
   }
   .quote{
-    font-family: 'EB Garamond', serif;
-    font-size: 30px;
-    
-
-  }
+    font-family: 'Nova Square', cursive;
+    font-size: 25px;
+    background-color:lightcoral;
+    width: 75%;
+    text-align: center;
+    margin: auto;
+    text-shadow: 2px 2px 3px white;
+}
 
 h1 {
     font-size: 19px;
     font-family:'Times New Roman', Times, serif'
 }
-.imgs {
+.row  {
+    margin:auto;
     text-align: center;
-    margin: 10px;
+    
     
 }
-
-.title {
-    font-size: 30px;
-    text-decoration:underline;
-    font-family: 'EB Garamond', serif;
-}
-.about {
-    display:flex;
+.arrow-p {
+    font-size: 25px;
     font-family: 'Poppins', sans-serif;
 }
-
-.about img {
-    display: block;
-    margin-left: auto;
-    }
-.about p {
-    font-size: 20px;
-
-    }
-.title2 {
-    margin:30px;
-    text-align: right;
-    font-size: 30px;
-    text-decoration:underline;
-    font-family: 'EB Garamond', serif;
+.btn-arrow {
+    font-size: 25px;
 }
-.goal {
-    display:flex;
-   
-}
-.goal p{
-font-size: 20px;
-margin-left: 50px;
-font-family: 'Poppins', sans-serif;
 
-}
+
+
 /* category cssssssssssssssssss */
 .category-h1 {
     font-size: 35px;
@@ -127,7 +106,7 @@ font-family: 'Poppins', sans-serif;
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
-/* register///login//// */
+/* register///login//// ------------------------------------>*/
 label {
     font-family: 'Poppins', sans-serif;
 }
@@ -161,5 +140,45 @@ label {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
+}
+/* about us page-----------------------> */
+.title {
+    font-size: 30px;
+    text-decoration:underline;
+    font-family: 'EB Garamond', serif;
+}
+.about {
+    display:flex;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about img {
+    display: block;
+    margin-left: auto;
+    border-radius: 20%;
+    }
+.about p {
+    font-size: 20px;
+
+    }
+.title2 {
+    margin:30px;
+    text-align: right;
+    font-size: 30px;
+    text-decoration:underline;
+    font-family: 'EB Garamond', serif;
+}
+.goal {
+    display:flex;
+   
+}
+.goal img {
+    border-radius: 20%;
+}
+.goal p{
+font-size: 20px;
+margin-left: 50px;
+font-family: 'Poppins', sans-serif;
+
 }
 
