@@ -1,54 +1,53 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
-        <script src="/scripts/main.js" defer></script>
-
-        <title>Submit New Post</title>
-        <style>
-            body{
-                background-color:#fff4f4;
-                color:rgb(65, 65, 65);
-            }
-        </style>
-    </head>
+    <%- include( 'partials/head.ejs')  %>
     <body>  
 	
         <%- include( 'partials/nav.ejs' ,)  %>
-        <section>
-            <div>
-                <h1 class="title">Login</h1>
-            </div>
-        </section>
 
-        <main class="container">
-
-	      <form action="/bravado/login" method="POST">
-
-            <label for="username">Username</label>
-            <div>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                />
-            </div>
-
-            <label for="company">Password</label>
-            <div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                />
-            </div>
-
-		     <button class="button is-info">Login</button>
-	     </form>
-
-         <p><a href="/bravado/register">Don't have an Account?</a></p>
-     </main>
-	</body>
+            <section class="ftco-section">
+                <div class="login-container">
+                    <div class="row justify-content-center">
+                       
+                        <div class="col-md-6 text-center mb-5">
+                            <h2 class="heading-section">Login</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="login-wrap p-4 p-md-5">
+                            
+                          <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-user-o"></span>
+                          </div>
+                          
+                          <h3 class="text-center mb-4">Have an account?</h3>
+                                <form action="/bravado/login" method="POST" class="login-form">
+                                
+                              <div class="form-group">
+                                  <input type="text" class="form-control rounded-left" name="username" id="username" placeholder="Username" required="">
+                              </div>
+                              
+                              <div class="form-group d-flex">
+                                <input type="password" class="form-control rounded-left" name="password" id="password" placeholder="Password" required="">
+                              </div>
+                        
+                        <div class="form-group d-md-flex"></div>
+                        
+                        <div class="form-group-btn">
+                            <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Log in</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+        
+        <p class='register-link'><a href="/bravado/register">Don't have an Account?</a></p>
+          
+    </main>
+   </body>
 </html>
