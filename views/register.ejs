@@ -1,65 +1,59 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
-        <script src="/scripts/main.js" defer></script>
-
-        <title>Submit New Post</title>
-        <style>
-            body{
-                background-color:#fff4f4;
-                color:rgb(65, 65, 65);
-            }
-        </style>
-    </head>
+    <%- include( 'partials/head.ejs')  %>
     <body>  
 	
         <%- include( 'partials/nav.ejs' ,)  %>
-        <section>
-            <div>
-                <h1 class="title">Register</h1>
-            </div>
-        </section>
+       
 
         <main class="container">
 
 	      <form action="/bravado/register" method="POST">
-
-            <label for="user">Username</label>
-            <div>
-                <input
-                  type="text"
-                  placeholder="Keep it Cool!"
-                  name="user"
-                  id="user"
-                />
-            </div>
-
-            <label for="email">Email</label>
-            <div>
-                <input
-                  type="text"
-                  placeholder="your@email.com"
-                  name="email"
-                  id="email"
-                />
-            </div>
-
-            <label for="company">Password</label>
-            <div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                />
-            </div>
-
-		     <button class="button is-info">Register</button>
+            <section class="ftco-section">
+                <div class="login-container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-5">
+                            <h2 class="heading-section">Register</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="login-wrap p-4 p-md-5">
+                          <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-user-o"></span>
+                          </div>
+                          <h3 class="text-center mb-4">Create account</h3>
+                                <form action="#" class="login-form">
+                              <div class="form-group">
+                                <input type="text" class="form-control rounded-left" placeholder="Email" required="">
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control rounded-left" placeholder="Username" required="">
+                              </div>
+                        <div class="form-group d-flex">
+                          <input type="password" class="form-control rounded-left" placeholder="Password" required="">
+                        </div>
+                        <div class="form-group d-md-flex">
+                            <div class="w-50">
+                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                              <input type="checkbox" checked="">
+                                              <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get started</button>
+                        </div>
+                      </form>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+   
 	     </form>
 
-         <p><a href="/bravado/login">Already have an Account?</a></p>
+         <p class= "log-in-link"> <a href="/bravado/login">Already have an Account?</a></p>
      </main>
 	</body>
 </html>

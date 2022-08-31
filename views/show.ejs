@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Auction</title>
-    <link rel="stylesheet" href="/styles/show/style.css">
-</head>
+    <%- include( 'partials/head.ejs')  %>
 <body>
-    <nav class="navbar">
+    <%- include( 'partials/nav.ejs' ,)  %>
+    <nav class="show-navbar">
         <div>
             <a href="/"> Home </a> | 
             <a href="/bravado/newSubmission"> New Post </a> |
             <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> |
-            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Leave Comment </a> |
+            
         </div>
     </nav>
 
-    <h1><%= userSubmission.title %></h1>
-    <h2>by <%= userSubmission.user %></h2>
+    <h1 class="category-h1"><%= userSubmission.title %></h1>
+    <h2 class ="category-h2">by <%= userSubmission.user %></h2>
 
     <div>
         <p><%= userSubmission.post %></p>
@@ -26,9 +21,11 @@
 
     <div>
         <p class="control">
+           
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
+            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> |
         </p>
     </div>
 

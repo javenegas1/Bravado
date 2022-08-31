@@ -1,5 +1,5 @@
 body{
-    background-color:#fff4f4;
+    background-color:#ffffff;
     color:rgb(65, 65, 65);
     padding:0;
 }
@@ -15,7 +15,7 @@ body{
 }
 
 .navbar{
-    border: 1px solid red;
+   
     background-color:gainsboro;
     padding-top: 11px;
     padding-bottom: 11px;
@@ -59,6 +59,12 @@ body{
 
    
   }
+  .quote{
+    font-family: 'EB Garamond', serif;
+    font-size: 30px;
+    
+
+  }
 
 h1 {
     font-size: 19px;
@@ -73,6 +79,7 @@ h1 {
 .title {
     font-size: 30px;
     text-decoration:underline;
+    font-family: 'EB Garamond', serif;
 }
 .about {
     display:flex;
@@ -92,6 +99,7 @@ h1 {
     text-align: right;
     font-size: 30px;
     text-decoration:underline;
+    font-family: 'EB Garamond', serif;
 }
 .goal {
     display:flex;
@@ -103,3 +111,55 @@ margin-left: 50px;
 font-family: 'Poppins', sans-serif;
 
 }
+/* category cssssssssssssssssss */
+.category-h1 {
+    font-size: 35px;
+    font-family: 'EB Garamond', serif;
+}
+.category-h2 {
+    font-size:20px ;
+    
+    font-family: 'Poppins', sans-serif;
+}
+.category-container {
+   
+    margin:25px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+/* register///login//// */
+label {
+    font-family: 'Poppins', sans-serif;
+}
+.heading-section {
+    text-decoration: underline;
+}
+.log-in-link {
+    text-align: center;
+}
+.register-link {
+    text-align: center;
+}
+.form-group-btn {
+    text-align: center;
+}
+.login-wrap .icon {
+    width: 80px;
+    height: 80px;
+    background: crimson;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
