@@ -1,6 +1,8 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 // const bootstrap = require('bootstrap')
 require('./db.connection')
 app.use(express.static('public'))
@@ -17,7 +19,21 @@ const quotes = [
     {quote:`There is no greater agony than bearing an untold story inside you.`, speaker: `Maya Angelou`},
     ]
 
+//create session
+app.use(
+    session({
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_KEY }),
+        // 'secret' key for signing cookies
+        secret: "secretly stealing cookies",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 1
+        },
+    })
+);
 
+//for users with account setup
 const userController = require('./controllers/user_controller')
 app.use('/bravado', userController)
 
