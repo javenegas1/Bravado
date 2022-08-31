@@ -10,6 +10,12 @@ Debugging / Additional Features -------------->
     ie. 'Username already exists' , 'Email is already used'
 - Edit Username (possibly password) page on mongodb
 - Option to like and/or favorite a post
+- Have navbar update when user is logged in and when user is logged out
 
 - route to favorites - would most likely need to push into a favorites array
     within user schema, render as list on favorites page
+
+
+- refactor ejs pages <%if (authUser == true) %>
+    - most likely need auth middleware to refactor
+    - authUser defined within router.get
