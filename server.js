@@ -17,7 +17,7 @@ const quotes = [
     {quote:`There is no greater agony than bearing an untold story inside you.`, speaker: `Maya Angelou`},
     ]
 
-
+//for users with account setup
 const userController = require('./controllers/user_controller')
 app.use('/bravado', userController)
 
