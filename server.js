@@ -10,7 +10,6 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
 app.use('/public', express.static('public'));
 
-
 const quotes = [
     {quote:`Be yourself; everyone else is already taken.`, speaker: `Oscar Wilde`},
     {quote:`Be the change that you wish to see in the world.`, speaker: `Mahatma Gandhi`},
@@ -33,10 +32,18 @@ app.use(
     })
 );
 
+//passes user information
+app.use(function (req, res, next) {
+    res.locals.user = req.session.thisUser;
+    console.log(res.locals.user)
+    next();
+  });
+const navbar = require('./navbar');
+app.use(navbar);
+
 //for users with account setup
 const userController = require('./controllers/user_controller')
 app.use('/bravado', userController)
-
 
 //controller setup for CRUD
 const mainController = require('./controllers/main_controller')

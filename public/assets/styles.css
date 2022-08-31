@@ -1,5 +1,4 @@
 
-
 /* index / home page css */
 body{
     background-color:#ffffff;
@@ -15,14 +14,10 @@ body{
     gap:1em;
 }
 
-.navbar{
-   
+.navbar{ 
     background-color:gainsboro;
     padding-top: 11px;
-    padding-bottom: 11px;
-    
-    
-    
+    padding-bottom: 11px;  
 }
 .nav input[type=text] {
     margin-left:auto;
@@ -57,8 +52,6 @@ body{
 .carousel-inner > .carousel-item > img {
    width:100%;
    height: auto;
-
-   
   }
   .quote{
     font-family: 'Nova Square', cursive;
