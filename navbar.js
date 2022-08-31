@@ -17,10 +17,10 @@ const userRoutes = [
 ];
 
 let navbar = function navbar(req, res, next) {
-    if (req.session.authUser) {
-        res.locals.routes = userRoutes;
+    if (req.session.thisUser == undefined) {
+        res.locals.routes = generalRoutes;
     } else {
-        res.locals.routes = authRoutes;
+        res.locals.routes = userRoutes;
     }
     // locals
     next();

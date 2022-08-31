@@ -12,6 +12,10 @@ router.get('/newSubmission', (req, res) => {
     res.render('new.ejs')
 })
 
+router.get('/about', (req, res) => {
+    res.render('about.ejs')
+})
+
 //posts to category
 router.post('/', async (req, res) => {
     try{
