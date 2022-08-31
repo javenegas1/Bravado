@@ -15,7 +15,13 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try{
+        //if(!User.findOne({email: req.body.email})) return console.log('email is used')
         //hashPassword
+        const hashPassword = await bcrypt.hash(req.body.password, 10)
+        req.body.password = hashPassword
+        const createUser = await User.create(req.body)
+        console.log(createUser)
+        res.redirect('/bravado/login')
     } catch(error){
         console.log(error)
         res.send(error)
@@ -29,11 +35,36 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     try{
-        //match login information with database
+        //match login information with user database
+        const authUser = await User.findOne({username: req.body.username})
+        if(!authUser) return console.log('user not found')
+
+        //match password with hashpassword
+        const validPassword = await bcrypt.compare(req.body.password, authUser.password)
+        if(!validPassword) return console.log('invalid user')
+
+        req.session.thisUser = {
+            id: authUser._id,
+            username: authUser.username,
+        };
+        console.log(req.session)
+        res.redirect('/')
     } catch(error){
         console.log(error)
         res.send(error)
     }
 })
+
+//logout functionality
+//destroy session upon logout
+router.get('/logout', async (req, res) => {
+    try {
+        await req.session.destroy();
+        return res.redirect("/bravado/login");
+    } catch (error) {
+        console.log(error);
+        return res.send(error);
+    }
+});
 
 module.exports = router
