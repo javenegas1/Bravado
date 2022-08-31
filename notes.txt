@@ -1,3 +1,8 @@
+---for later, for establishing sessions and cookies for users that login
 npm install express-session connect-mongo
 
----for later, for establishing sessions and cookies for users that login
+
+Debugging -------------->
+- proper routing from comments redirect
+- create way for comments to be pushed all on same page without redirection ideally
+- mongodb username/password mgmt
