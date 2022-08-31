@@ -8,7 +8,7 @@ Debugging / Additional Features -------------->
 - mongodb username/password mgmt
 - register path displays messages depending on input
     ie. 'Username already exists' , 'Email is already used'
-- Edit User page on mongodb
+- Edit Username (possibly password) page on mongodb
 - Option to like and/or favorite a post
 
 - route to favorites - would most likely need to push into a favorites array

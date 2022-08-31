@@ -113,9 +113,7 @@ router.get('/:category/:submissionId/edit', async (req, res) => {
 
 router.put('/:category/:submissionId', async (req, res) => {
     try {
-        //const categoryBtn = document.getElementById('editBtn')
         const updatePost = await Review.findByIdAndUpdate(req.params.submissionId, req.body);  
-        //console.log(categoryBtn);
         return res.redirect(`/bravado/${updatePost.category}`);
     } catch (error) {
         //error = 'Could not Post'

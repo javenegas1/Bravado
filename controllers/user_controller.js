@@ -42,6 +42,12 @@ router.post('/login', async (req, res) => {
         //match password with hashpassword
         const validPassword = await bcrypt.compare(req.body.password, authUser.password)
         if(!validPassword) return console.log('invalid user')
+
+        req.session.thisUser = {
+            id: authUser._id,
+            username: authUser.username,
+        };
+        console.log(req.session)
         res.redirect('/')
     } catch(error){
         console.log(error)
@@ -49,9 +55,16 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//create session upon login
-
-//destroy session upon logout
-
 //logout functionality
+//destroy session upon logout
+router.get('/logout', async (req, res) => {
+    try {
+        await req.session.destroy();
+        return res.redirect("/bravado/login");
+    } catch (error) {
+        console.log(error);
+        return res.send(error);
+    }
+});
+
 module.exports = router
