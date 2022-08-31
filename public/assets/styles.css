@@ -46,7 +46,7 @@ body{
 .nav a:hover {
     background-color: azure;
     text-transform: uppercase;
-    text-shadow: 2px 2px 3px rgb(249, 4, 150);
+    text-shadow: 2px 2px 3px white;
 }
 .nav a:active{
     background-color: crimson;
