@@ -5,6 +5,7 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
 const Review = require('../models/bravado_schema')
+const User = require('../models/user_schema')
 
 //new submissions
 router.get('/newSubmission', (req, res) => {
@@ -49,7 +50,6 @@ router.get('/:category', async (req, res) => {
 router.get('/:category/:submissionId', async (req, res) => {
     try {
         const userSubmission = await Review.findById(req.params.submissionId)
-        // console.log(comment.user)
         console.log(userSubmission);
         //provides context for delete button as well
         const context = { userSubmission: userSubmission, id: userSubmission._id }
@@ -117,9 +117,7 @@ router.get('/:category/:submissionId/edit', async (req, res) => {
 
 router.put('/:category/:submissionId', async (req, res) => {
     try {
-        //const categoryBtn = document.getElementById('editBtn')
         const updatePost = await Review.findByIdAndUpdate(req.params.submissionId, req.body);  
-        //console.log(categoryBtn);
         return res.redirect(`/bravado/${updatePost.category}`);
     } catch (error) {
         //error = 'Could not Post'
