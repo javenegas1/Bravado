@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/javenegas1/Bravado#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
