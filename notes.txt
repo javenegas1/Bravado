@@ -18,3 +18,4 @@ Debugging / Additional Features -------------->
 - refactor ejs pages <%if (authUser == true) %>
     - most likely need auth middleware to refactor
     - authUser defined within router.get
+

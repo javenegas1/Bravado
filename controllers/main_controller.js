@@ -11,6 +11,10 @@ const User = require('../models/user_schema')
 router.get('/newSubmission', (req, res) => {
     res.render('new.ejs')
 })
+//about us page 
+router.get('/about', (req,res) => {
+    res.render('about.ejs')
+})
 
 router.get('/about', (req, res) => {
     res.render('about.ejs')
@@ -124,5 +128,6 @@ router.put('/:category/:submissionId', async (req, res) => {
         console.log(error)
     }
   });
+
 
 module.exports = router
