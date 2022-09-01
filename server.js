@@ -35,7 +35,7 @@ app.use(
 //passes user information
 app.use(function (req, res, next) {
     res.locals.user = req.session.thisUser;
-    console.log(res.locals.user)
+    //console.log(res.locals.user)
     next();
   });
 const navbar = require('./navbar');
