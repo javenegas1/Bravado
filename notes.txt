@@ -1,10 +1,8 @@
 Debugging / Additional Features -------------->
-- proper routing from comments redirect
-- create way for comments to be pushed all on same page without redirection ideally
-- 'register' path displays messages depending on input
-    ie. 'Username already exists' , 'Email is already used'
+- redirect after comment push
 - Edit Username (possibly password) page on mongodb (Edit / Delete Profile Page)
     - replace search bar with profile page
+    - take into account how req.session.thisUser would be impacted
 - Option to like and/or favorite a post
 - Have navbar update when user is logged in and when user is logged out
 - Add timestamp to comments
@@ -14,10 +12,7 @@ Debugging / Additional Features -------------->
     within user schema, render as list on favorites page
     - includes button under individual posts to add to fav array
 
-
-- refactor ejs pages <%if (authUser == true) %>
-    - most likely need auth middleware to refactor
-    - authUser defined within router.get
+- admin account
 
 
 <!-- </div>

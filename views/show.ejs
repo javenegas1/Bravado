@@ -5,9 +5,7 @@
     <%- include( 'partials/nav.ejs' ,)  %>
     <nav class="show-navbar">
         <div>
-
             <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> 
-            
         </div>
     </nav>
 
@@ -25,17 +23,47 @@
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
             <% } %>
-            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> |
+            <!-- <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> -->
         </p>
     </div>
 
     <main class="container">
         <ul>
             <% for(let i = 0; i<userSubmission.comments.length; i++){ %>
-                <li><%= userSubmission.comments[i].post %></li>
+                <li><%= userSubmission.comments[i].user %> - <%= userSubmission.comments[i].post %></li>
             <% } %> 
         </ul>
     </main>
+
+    <% if(oneUser.username !== 'default') {%>
+    <h1>Hello, <%= oneUser.username %>!</h1>
+    <!-- form for comments -->
+           <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
+   
+               <!-- <label for="user">Username</label> -->
+               <div>
+                   <input
+                     type="hidden"
+                     placeholder="Default"
+                     name="user"
+                     id="user"
+                   />
+               </div>
+       
+               <label for="post">Leave a Comment</label>
+               <div>
+                     <textarea
+                       type="text"
+                       placeholder="Say Something!"
+                       name="post"
+                       id="post"
+                     ></textarea>
+               </div>
+       
+                <button class="button is-info">Comment</button>
+            </form>
+    <% } %>
+
 
 </body>
 </html>
