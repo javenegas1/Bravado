@@ -3,14 +3,14 @@
     
     Where Professionals Gather
 
+<% if(typeof user !== 'undefined') { %>
+
 <nav class="navbar navbar-default navbar-fixed-top">
    
     <nav class="navbar">
 
     <div class=" nav">
         <a href="/bravado/"> Home </a>  
-        <a href="/bravado/register"> Register </a>
-        <a href="/bravado/login"> Login </a>
         <a href="/bravado/newSubmission"> Post </a>
         <a href="/bravado/general/"> General </a>
         <a href="/bravado/tech/"> Tech </a>
@@ -20,3 +20,18 @@
         <input class=" nav-search" type="text" placeholder="Search..">
     </div>
 </nav>
+<% } else { %>
+    <nav class="navbar">
+        <div class=" nav">
+            <a href="/bravado/"> Home </a>  
+            <a href="/bravado/register"> Register </a>
+            <a href="/bravado/login"> Login </a>
+            <a href="/bravado/newSubmission"> Post </a>
+            <a href="/bravado/general/"> General </a>
+            <a href="/bravado/tech/"> Tech </a>
+            <a href="/bravado/finance/"> Finance </a>
+            <a href="/bravado/about/"> About Us </a>
+            <input class=" nav-search" type="text" placeholder="Search..">
+        </div>
+    </nav>
+    <% } %>
