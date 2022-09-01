@@ -73,11 +73,16 @@ h1 {
     
     
 }
-.arrow-p {
-    font-size: 25px;
-    font-family: 'Poppins', sans-serif;
+.container-marketing {
+    display:flex;
 }
-.btn-arrow {
+.advertisment {
+    font-size: 30px;
+    margin-top: 70px;
+    font-family: 'Poppins', sans-serif;
+
+}
+.mb-0 {
     font-size: 25px;
 }
 
