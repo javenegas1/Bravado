@@ -28,7 +28,7 @@ const User = require('../models/user_schema')
 //about us page
 router.get('/about', (req, res) => {
     //console.log(req.session.thisUser)
-    console.log(generalRoutes)
+    
     res.render('about.ejs')
 })
 
