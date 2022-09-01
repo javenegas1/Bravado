@@ -11,12 +11,14 @@
 
         <main class="container">
 
+        <h1>Hello, <%= oneUser.username %>!</h1>
+
 	      <form action="/bravado" method="POST">
 
-            <label for="user">Username</label>
+            <!-- <label for="user">Username</label> -->
             <div>
                 <input
-                  type="text"
+                  type="hidden"
                   placeholder="Default"
                   name="user"
                   id="user"

@@ -7,28 +7,44 @@ router.use(express.urlencoded({ extended: false }));
 const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
-//new submissions
-router.get('/newSubmission', (req, res) => {
-    res.render('new.ejs')
-})
-//about us page 
+
+//about us page
 router.get('/about', (req,res) => {
     res.render('about.ejs')
 })
 
+//new submissions
+router.get('/newSubmission', (req, res) => {
+    res.render('new.ejs')
+})
+
 router.get('/about', (req, res) => {
+    //console.log(req.session.thisUser)
     res.render('about.ejs')
+})
+
+//new submissions
+router.get('/newSubmission', async (req, res) => {
+    try{
+        await User.find({username: req.session.thisUser.username})
+        const context = {oneUser: req.session.thisUser}
+        res.render('new.ejs', context)
+    } catch {
+        res.send('Create an Account first!')
+        //res.redirect('/bravado/register')
+    }
+    //res.render('new.ejs')
 })
 
 //posts to category
 router.post('/', async (req, res) => {
     try{
+        const oneUser = req.session.thisUser.username
+        req.body.user = oneUser
         const createReview = await Review.create(req.body)
-        console.log(createReview);
-  
+        console.log(createReview);  
         res.redirect("/");
     } catch (error){
-        //error = 'Could not Post'
         console.log(error)
         res.send(error)
     }
@@ -44,7 +60,6 @@ router.get('/:category', async (req, res) => {
         console.log(findReview)
         return res.render('category.ejs', context);
     } catch (error) {
-        //error = 'Could not Post'
         console.log(error)
         res.send(error)
     }
@@ -60,20 +75,27 @@ router.get('/:category/:submissionId', async (req, res) => {
         res.render('show.ejs', context)
         //res.send('hello')
     } catch (error) {
-        //error = 'Could not Post'
         console.log(error)
     }
 })
 
 //new comments
-router.get('/:category/:submissionId/comment', (req, res) => {
-    const context = {category: req.params.category, submissionId: req.params.submissionId}
-    res.render('comment.ejs', context)
+router.get('/:category/:submissionId/comment', async (req, res) => {
+    try{
+        await User.find({username: req.session.thisUser.username})
+        const context = {category: req.params.category, submissionId: req.params.submissionId, oneUser: req.session.thisUser}
+        res.render('comment.ejs', context)
+    } catch {
+        res.send('Create an Account first!')
+        //res.redirect('/bravado/register')
+    }
 })
 
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
     try{
+        const oneUser = req.session.thisUser.username
+        req.body.user = oneUser
         const userSubmission = await Review.findById(req.params.submissionId)
         const comment = await userSubmission.comments.create(req.body)
         console.log(req.body)
@@ -89,7 +111,6 @@ router.post('/:category/:submissionId', async (req, res) => {
         res.redirect('/')
 
     } catch (error){
-        //error = 'Could not Post'
         console.log(error)
         res.send(error)
     }
@@ -98,24 +119,30 @@ router.post('/:category/:submissionId', async (req, res) => {
 //deletes individual submission
 router.delete('/:category/:submissionId', async (req, res) => {
     try {
+        //compare req.session.thisUser.username to Review.find({user})
+        // if no match then block access to be able to delete
         const deletePost = await Review.findByIdAndDelete(req.params.submissionId);
         console.log(deletePost)
         res.redirect('/bravado');
     } catch(error) {
-        //error = 'Could not Post'
         console.log(error)
+        //res.send('Not for you to delete')
+        //res.redirect('/bravado/:category/:submissionId')?
     }
   })
 
 //Edit and Update individual submissions
 router.get('/:category/:submissionId/edit', async (req, res) => {
     try {
+        //compare req.session.thisUser.username to Review.find({user})
+        // if no match then block access to be able to delete
         const updatePost = await Review.findById(req.params.submissionId);
         console.log(updatePost);
         return res.render('edit.ejs', { userPost: updatePost })
     } catch (error) {
-        //error = 'Could not Post'
         console.log(error)
+        //res.send('Not for you to edit')
+        //res.redirect('/bravado/:category/:submissionId')?
     }
   })
 
@@ -124,7 +151,6 @@ router.put('/:category/:submissionId', async (req, res) => {
         const updatePost = await Review.findByIdAndUpdate(req.params.submissionId, req.body);  
         return res.redirect(`/bravado/${updatePost.category}`);
     } catch (error) {
-        //error = 'Could not Post'
         console.log(error)
     }
   });
