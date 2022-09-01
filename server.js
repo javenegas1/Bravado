@@ -16,7 +16,7 @@ const quotes = [
     {quote:`There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.`, speaker: `Albert Einstein`},
     {quote:`I have not failed. I've just found 10,000 ways that won't work.`, speaker: `Thomas Edison`},
     {quote:`There is no greater agony than bearing an untold story inside you.`, speaker: `Maya Angelou`},
-    ]
+    ];
 
 //create session
 app.use(
@@ -38,8 +38,9 @@ app.use(function (req, res, next) {
     //console.log(res.locals.user)
     next();
   });
-const navbar = require('./navbar');
-app.use(navbar);
+
+// const navbar = require('./navbar');
+// app.use(navbar);
 
 //for users with account setup
 const userController = require('./controllers/user_controller')
