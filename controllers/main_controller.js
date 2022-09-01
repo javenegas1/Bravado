@@ -7,17 +7,7 @@ router.use(express.urlencoded({ extended: false }));
 const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
-
 //about us page
-router.get('/about', (req,res) => {
-    res.render('about.ejs')
-})
-
-//new submissions
-router.get('/newSubmission', (req, res) => {
-    res.render('new.ejs')
-})
-
 router.get('/about', (req, res) => {
     //console.log(req.session.thisUser)
     res.render('about.ejs')
@@ -154,6 +144,5 @@ router.put('/:category/:submissionId', async (req, res) => {
         console.log(error)
     }
   });
-
 
 module.exports = router
