@@ -27,8 +27,7 @@ const User = require('../models/user_schema')
 
 //about us page
 router.get('/about', (req, res) => {
-    //console.log(req.session.thisUser)
-    
+    console.log(req.session.thisUser)    
     res.render('about.ejs')
 })
 
@@ -39,10 +38,9 @@ router.get('/newSubmission', async (req, res) => {
         const context = {oneUser: req.session.thisUser}
         res.render('new.ejs', context)
     } catch {
-        res.send('Create an Account first!')
-        //res.redirect('/bravado/register')
+        //res.send('Create an Account first!')
+        res.redirect('/bravado/register')
     }
-    //res.render('new.ejs')
 })
 
 //posts to category
@@ -77,14 +75,14 @@ router.get('/:category', async (req, res) => {
 //retrieves individual submissions
 router.get('/:category/:submissionId', async (req, res) => {
     try {
+        //await User.find({username: req.session.thisUser.username})
         // 'default' req.session.thisUser to bypass ejs rules
         let oneUser = {_id: 1, username: 'default' };
         if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
-
         const userSubmission = await Review.findById(req.params.submissionId)
         console.log(userSubmission);
         //provides context for delete button as well
-        const context = { userSubmission: userSubmission, id: userSubmission._id, oneUser: oneUser }
+        const context = { userSubmission: userSubmission, id: userSubmission._id, oneUser: oneUser, category: req.params.category,submissionId: req.params.submissionId }
         res.render('show.ejs', context)
         //res.send('hello')
     } catch (error) {
@@ -93,16 +91,16 @@ router.get('/:category/:submissionId', async (req, res) => {
 })
 
 //new comments
-router.get('/:category/:submissionId/comment', async (req, res) => {
-    try{
-        await User.find({username: req.session.thisUser.username})
-        const context = {category: req.params.category, submissionId: req.params.submissionId, oneUser: req.session.thisUser}
-        res.render('comment.ejs', context)
-    } catch {
-        res.send('Create an Account first!')
-        //res.redirect('/bravado/register')
-    }
-})
+// router.get('/:category/:submissionId/comment', async (req, res) => {
+//     try{
+//         await User.find({username: req.session.thisUser.username})
+//         const context = {category: req.params.category, submissionId: req.params.submissionId, oneUser: req.session.thisUser}
+//         res.render('comment.ejs', context)
+//     } catch {
+//         res.send('Create an Account first!')
+//         //res.redirect('/bravado/register')
+//     }
+// })
 
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
@@ -132,22 +130,19 @@ router.post('/:category/:submissionId', async (req, res) => {
 //deletes individual submission
 router.delete('/:category/:submissionId', async (req, res) => {
     try {
-        //compare req.session.thisUser.username to Review.find({user})
-        // if no match then block access to be able to delete
         const deletePost = await Review.findByIdAndDelete(req.params.submissionId);
-        //if(deletePost.user == req.session.thisUser.username) return res.redirect('/bravado');
         console.log(deletePost)
         res.redirect('/bravado');
     } catch(error) {
         console.log(error)
-        //res.send('Not for you to delete')
-        //res.redirect('/bravado/:category/:submissionId')?
     }
   })
 
 //Edit and Update individual submissions
 router.get('/:category/:submissionId/edit', async (req, res) => {
     try {
+        //refactor req.session.thisUser.username, for multiple cases for
+        //when user is not one who posted article
         const updatePost = await Review.findById(req.params.submissionId);
         if(updatePost.user == req.session.thisUser.username) return res.render('edit.ejs', { userPost: updatePost })
         console.log(updatePost);

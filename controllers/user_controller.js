@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
 
 //register too --------------------->
 router.get('/register_try=again', (req, res) => {
-    const context = {message: 'This Username or Email is already Taken'}
+    const context = {message: 'This Username or Email is already taken 😔'}
     res.render('register2.ejs', context)
     //res.send('hello')
 })
@@ -96,5 +96,7 @@ router.get('/logout', async (req, res) => {
         return res.send(error);
     }
 });
+
+//edit and delete routes for profile --------------->
 
 module.exports = router
