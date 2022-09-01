@@ -52,6 +52,7 @@ app.use('/bravado', mainController)
 
 app.get('/bravado', (req, res) =>{
     res.render('index.ejs', {quotes: quotes})
+    console.log(req.session.thisUser)
 })
 
 app.get('/', (req, res) => {
