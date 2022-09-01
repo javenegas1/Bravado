@@ -5,9 +5,8 @@
     <%- include( 'partials/nav.ejs' ,)  %>
     <nav class="show-navbar">
         <div>
-            <a href="/"> Home </a> | 
-            <a href="/bravado/newSubmission"> New Post </a> |
-            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> |
+
+            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> 
             
         </div>
     </nav>
@@ -21,10 +20,11 @@
 
     <div>
         <p class="control">
-           
+           <% if(oneUser.username == userSubmission.user) {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
+            <% } %>
             <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> |
         </p>
     </div>
@@ -36,31 +36,6 @@
             <% } %> 
         </ul>
     </main>
-
-                    <!-- form for comments -->
-    <!-- <form action="/bravado" method="POST">
-
-        <label for="user">Username</label>
-        <div>
-            <input
-              type="text"
-              placeholder="Default"
-              name="user"
-              id="user"
-            />
-        </div>
-
-        <label for="post">Leave a Comment</label>
-        <div>
-              <textarea
-                type="text"
-                placeholder="Say Something!"
-                name="post"
-                id="post"
-              ></textarea>
-        </div>
-             <button class="button is-info">Comment</button>
-     </form> -->
 
 </body>
 </html>

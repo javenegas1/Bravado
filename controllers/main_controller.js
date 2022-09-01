@@ -7,9 +7,28 @@ router.use(express.urlencoded({ extended: false }));
 const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
+// const generalRoutes = [
+//     { href: "/bravado/", title: "Home" },
+//     { href: "/bravado/general", title: "General" },
+//     { href: "/bravado/tech", title: "Tech" },
+//     { href: "/bravado/finance", title: "Finance" },
+//     { href: "/bravado/register", title: "Register" },
+//     { href: "/bravado/login", title: "Login" },
+// ];
+
+// const userRoutes = [
+//     { href: "/bravado/", title: "Home" },
+//     { href: "/bravado/newSubmission", title: "Post" },
+//     { href: "/bravado/general", title: "General" },
+//     { href: "/bravado/tech", title: "Tech" },
+//     { href: "/bravado/finance", title: "Finance" },
+//     { href: "/bravado/logout", title: "Logout" },
+// ];
+
 //about us page
 router.get('/about', (req, res) => {
     //console.log(req.session.thisUser)
+    console.log(generalRoutes)
     res.render('about.ejs')
 })
 
@@ -58,10 +77,14 @@ router.get('/:category', async (req, res) => {
 //retrieves individual submissions
 router.get('/:category/:submissionId', async (req, res) => {
     try {
+        // 'default' req.session.thisUser to bypass ejs rules
+        let oneUser = {_id: 1, username: 'default' };
+        if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
+
         const userSubmission = await Review.findById(req.params.submissionId)
         console.log(userSubmission);
         //provides context for delete button as well
-        const context = { userSubmission: userSubmission, id: userSubmission._id }
+        const context = { userSubmission: userSubmission, id: userSubmission._id, oneUser: oneUser }
         res.render('show.ejs', context)
         //res.send('hello')
     } catch (error) {
@@ -97,7 +120,7 @@ router.post('/:category/:submissionId', async (req, res) => {
         
         // redirect troubleshoot ----------->
         // res.redirect(`/${userSubmission.category}/${userSubmission.id}`);
-        //res.redirect(`/${req.params.category}/${req.params.submissionId}`);
+        // res.redirect(`/${req.params.category}/${req.params.submissionId}`);
         res.redirect('/')
 
     } catch (error){
@@ -112,6 +135,7 @@ router.delete('/:category/:submissionId', async (req, res) => {
         //compare req.session.thisUser.username to Review.find({user})
         // if no match then block access to be able to delete
         const deletePost = await Review.findByIdAndDelete(req.params.submissionId);
+        //if(deletePost.user == req.session.thisUser.username) return res.redirect('/bravado');
         console.log(deletePost)
         res.redirect('/bravado');
     } catch(error) {
@@ -124,15 +148,13 @@ router.delete('/:category/:submissionId', async (req, res) => {
 //Edit and Update individual submissions
 router.get('/:category/:submissionId/edit', async (req, res) => {
     try {
-        //compare req.session.thisUser.username to Review.find({user})
-        // if no match then block access to be able to delete
         const updatePost = await Review.findById(req.params.submissionId);
+        if(updatePost.user == req.session.thisUser.username) return res.render('edit.ejs', { userPost: updatePost })
         console.log(updatePost);
         return res.render('edit.ejs', { userPost: updatePost })
     } catch (error) {
         console.log(error)
-        //res.send('Not for you to edit')
-        //res.redirect('/bravado/:category/:submissionId')?
+        res.redirect('/bravado/login')
     }
   })
 

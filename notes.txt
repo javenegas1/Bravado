@@ -1,10 +1,10 @@
 Debugging / Additional Features -------------->
 - proper routing from comments redirect
 - create way for comments to be pushed all on same page without redirection ideally
-- mongodb username/password mgmt
 - 'register' path displays messages depending on input
     ie. 'Username already exists' , 'Email is already used'
-- Edit Username (possibly password) page on mongodb
+- Edit Username (possibly password) page on mongodb (Edit / Delete Profile Page)
+    - replace search bar with profile page
 - Option to like and/or favorite a post
 - Have navbar update when user is logged in and when user is logged out
 - Add timestamp to comments
@@ -19,3 +19,41 @@ Debugging / Additional Features -------------->
     - most likely need auth middleware to refactor
     - authUser defined within router.get
 
+
+<!-- </div>
+<nav class="navbar">
+<div class="nav">
+    <% if(!req.session.thisUser) { %>
+        <% for(let i = 0; i<generalRoutes.length; i++){ %>
+            <a href="<%= generalRoutes[i].href %>"><%= generalRoutes[i].title %></a>
+    <% }} else {%> 
+        <% for(let i = 0; i<userRoutes.length; i++){ %>
+            <a href="<%= userRoutes[i].href %>"><%= userRoutes[i].title %></a>
+    <% } %>
+</div>
+</nav> -->
+
+                    <!-- form for comments -->
+                    <!-- <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
+
+                        <div>
+                            <input
+                              type="hidden"
+                              placeholder="Default"
+                              name="user"
+                              id="user"
+                            />
+                        </div>
+                
+                        <label for="post">Leave a Comment</label>
+                        <div>
+                              <textarea
+                                type="text"
+                                placeholder="Say Something!"
+                                name="post"
+                                id="post"
+                              ></textarea>
+                        </div>
+                
+                         <button class="button is-info">Comment</button>
+                     </form> -->
