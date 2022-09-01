@@ -89,6 +89,7 @@ router.post('/login', async (req, res) => {
 //destroy session upon logout
 router.get('/logout', async (req, res) => {
     try {
+        console.log(req.session.user, 'logout')
         await req.session.destroy();
         return res.redirect("/bravado/login");
     } catch (error) {
