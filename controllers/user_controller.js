@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
     }
 })
 
-//register too --------------------->
+//register too 
 router.get('/register_try=again', (req, res) => {
     const context = {message: 'This Username or Email is already taken 😔'}
     res.render('register2.ejs', context)
@@ -56,7 +56,6 @@ router.post('/register_try=again', async (req, res) => {
         res.send(error)
     }
 })
-//-------------------------------->
 
 //login
 router.get('/login', (req, res) => {
@@ -97,8 +96,6 @@ router.get('/logout', async (req, res) => {
         return res.send(error);
     }
 });
-
-//edit and delete routes for profile --------------->
 
 //delete profile
 //deletes individual submission
