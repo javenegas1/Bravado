@@ -59,12 +59,11 @@ router.get('/:category/:submissionId', async (req, res) => {
     try {
         //await User.find({username: req.session.thisUser.username})
         // 'default' req.session.thisUser to bypass ejs rules
-        console.log(res.locals.user)
-        console.log(req.session.thisUser)
-        const oneUser = req.session.thisUser
-        console.log(oneUser)
-        //let oneUser = {_id: 1, username: 'default' };
-        //if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
+        // console.log(req.session.thisUser)
+        // const oneUser = req.session.thisUser
+        // console.log(oneUser)
+        let oneUser = {_id: 1, username: 'default' };
+        if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
         const userSubmission = await Review.findById(req.params.submissionId)
         console.log(userSubmission);
         //provides context for delete button as well
@@ -76,10 +75,32 @@ router.get('/:category/:submissionId', async (req, res) => {
     }
 })
 
+//-------------------------------------------------------------->
+
+//router.post to push new 'favorited posts' into User.favorites array
+// router.post('/:category/:submissionId', async (req, res) => {
+//     try{
+//         const thisReview = await Review.findById(req.params.submissionId)
+//         const oneUser = req.session.thisUser
+//         const thisUser = await User.findOneAndUpdate(
+//             {username: oneUser.username},
+//             {$push: {favorites: req.params.submissionId}} //push title and category, make array of objects
+//             )
+//             //render array and have submission id 
+//             //possibly push entire object into findOneAndUpdate, 
+//     } catch (error) {
+//         console.log(error)
+//         res.send(error)
+//     }
+// })
+
+//-------------------------------------------------------------->
+
+
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
     try{
-        if(typeof user == 'undefined') return res.redirect('/bravado/login')
+        if(!req.session.thisUser) return res.redirect('/bravado/login')
         const oneUser = req.session.thisUser.username
         req.body.user = oneUser
         const userSubmission = await Review.findById(req.params.submissionId)
