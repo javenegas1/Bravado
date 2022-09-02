@@ -45,7 +45,7 @@ router.get('/:category', async (req, res) => {
     try {
         const sortCategory = req.params.category
         const findReview = await Review.find({category: sortCategory});
-        const context = { findReview: findReview, category: sortCategory}
+        const context = { findReview: findReview, category: sortCategory }
         console.log(findReview)
         return res.render('category.ejs', context);
     } catch (error) {
@@ -54,13 +54,17 @@ router.get('/:category', async (req, res) => {
     }
   });
 
-//retrieves individual submissions
+//retrieves individual submissions and comments form
 router.get('/:category/:submissionId', async (req, res) => {
     try {
         //await User.find({username: req.session.thisUser.username})
         // 'default' req.session.thisUser to bypass ejs rules
-        let oneUser = {_id: 1, username: 'default' };
-        if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
+        console.log(res.locals.user)
+        console.log(req.session.thisUser)
+        const oneUser = req.session.thisUser
+        console.log(oneUser)
+        //let oneUser = {_id: 1, username: 'default' };
+        //if(req.session.thisUser !== undefined) oneUser = req.session.thisUser
         const userSubmission = await Review.findById(req.params.submissionId)
         console.log(userSubmission);
         //provides context for delete button as well
