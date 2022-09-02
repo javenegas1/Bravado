@@ -1,54 +1,11 @@
 Debugging / Additional Features -------------->
-- redirect after comment push
 - Edit Username (possibly password) page on mongodb (Edit / Delete Profile Page)
     - replace search bar with profile page
     - take into account how req.session.thisUser would be impacted
 - Option to like and/or favorite a post
-- Have navbar update when user is logged in and when user is logged out
-- Add timestamp to comments
-
-
-- route to favorites - would most likely need to push into a favorites array
+    - route to favorites - would most likely need to push into a favorites array
     within user schema, render as list on favorites page
     - includes button under individual posts to add to fav array
-
-- admin account
-
-
-<!-- </div>
-<nav class="navbar">
-<div class="nav">
-    <% if(!req.session.thisUser) { %>
-        <% for(let i = 0; i<generalRoutes.length; i++){ %>
-            <a href="<%= generalRoutes[i].href %>"><%= generalRoutes[i].title %></a>
-    <% }} else {%> 
-        <% for(let i = 0; i<userRoutes.length; i++){ %>
-            <a href="<%= userRoutes[i].href %>"><%= userRoutes[i].title %></a>
-    <% } %>
-</div>
-</nav> -->
-
-                    <!-- form for comments -->
-                    <!-- <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
-
-                        <div>
-                            <input
-                              type="hidden"
-                              placeholder="Default"
-                              name="user"
-                              id="user"
-                            />
-                        </div>
-                
-                        <label for="post">Leave a Comment</label>
-                        <div>
-                              <textarea
-                                type="text"
-                                placeholder="Say Something!"
-                                name="post"
-                                id="post"
-                              ></textarea>
-                        </div>
-                
-                         <button class="button is-info">Comment</button>
-                     </form> -->
+- Add timestamp to comments
+- Create admin account
+- As long as any user is logged in they can edit any post, ----> debugging

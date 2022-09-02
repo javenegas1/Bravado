@@ -7,24 +7,6 @@ router.use(express.urlencoded({ extended: false }));
 const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
-// const generalRoutes = [
-//     { href: "/bravado/", title: "Home" },
-//     { href: "/bravado/general", title: "General" },
-//     { href: "/bravado/tech", title: "Tech" },
-//     { href: "/bravado/finance", title: "Finance" },
-//     { href: "/bravado/register", title: "Register" },
-//     { href: "/bravado/login", title: "Login" },
-// ];
-
-// const userRoutes = [
-//     { href: "/bravado/", title: "Home" },
-//     { href: "/bravado/newSubmission", title: "Post" },
-//     { href: "/bravado/general", title: "General" },
-//     { href: "/bravado/tech", title: "Tech" },
-//     { href: "/bravado/finance", title: "Finance" },
-//     { href: "/bravado/logout", title: "Logout" },
-// ];
-
 //about us page
 router.get('/about', (req, res) => {
     console.log(req.session.thisUser)    
@@ -115,12 +97,7 @@ router.post('/:category/:submissionId', async (req, res) => {
             {$push: { comments: comment }}
         )
         console.log(comment)
-        
-        // redirect troubleshoot ----------->
-        // res.redirect(`/${userSubmission.category}/${userSubmission.id}`);
-        // res.redirect(`/${req.params.category}/${req.params.submissionId}`);
-        res.redirect('/')
-
+        res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`);
     } catch (error){
         console.log(error)
         res.send(error)
