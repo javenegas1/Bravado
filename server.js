@@ -39,9 +39,6 @@ app.use(function (req, res, next) {
     next();
   });
 
-// const navbar = require('./navbar');
-// app.use(navbar);
-
 //for users with account setup
 const userController = require('./controllers/user_controller')
 app.use('/bravado', userController)

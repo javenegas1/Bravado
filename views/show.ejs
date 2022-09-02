@@ -18,7 +18,7 @@
 
     <div>
         <p class="control">
-           <% if(oneUser.username == userSubmission.user) {%>
+           <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
@@ -35,8 +35,10 @@
         </ul>
     </main>
 
-    <% if(oneUser.username !== 'default') {%>
+    <% if(typeof user !== 'undefined') {%>
     <h1>Hello, <%= oneUser.username %>!</h1>
+    <% } %>
+
     <!-- form for comments -->
            <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
    
@@ -62,7 +64,6 @@
        
                 <button class="button is-info">Comment</button>
             </form>
-    <% } %>
 
 
 </body>
