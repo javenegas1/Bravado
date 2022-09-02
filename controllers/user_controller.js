@@ -100,4 +100,21 @@ router.get('/logout', async (req, res) => {
 
 //edit and delete routes for profile --------------->
 
+//delete profile
+//deletes individual submission
+router.get('/manage-profile', (req,res) => {
+    console.log(req.session.thisUser)
+    res.render('manage-profile.ejs')
+})
+
+router.delete('/manage-profile', async (req, res) => {
+    try {
+        const deleteUser = await User.findOneAndDelete({username: req.session.thisUser.username});
+        console.log(deleteUser)
+        res.redirect('/bravado/logout');
+    } catch(error) {
+        console.log(error)
+    }
+  })
+
 module.exports = router

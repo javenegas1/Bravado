@@ -72,21 +72,10 @@ router.get('/:category/:submissionId', async (req, res) => {
     }
 })
 
-//new comments
-// router.get('/:category/:submissionId/comment', async (req, res) => {
-//     try{
-//         await User.find({username: req.session.thisUser.username})
-//         const context = {category: req.params.category, submissionId: req.params.submissionId, oneUser: req.session.thisUser}
-//         res.render('comment.ejs', context)
-//     } catch {
-//         res.send('Create an Account first!')
-//         //res.redirect('/bravado/register')
-//     }
-// })
-
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
     try{
+        if(typeof user == 'undefined') return res.redirect('/bravado/login')
         const oneUser = req.session.thisUser.username
         req.body.user = oneUser
         const userSubmission = await Review.findById(req.params.submissionId)
