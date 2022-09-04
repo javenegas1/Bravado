@@ -11,46 +11,49 @@
         padding-top: 40px;
         padding-bottom: 20px;
       }
+      form{
+        padding-top: 50px;
+        padding-left: 200px;
+        padding-right: 200px;
+      }
       .btn{
         margin-left: 500px;
       }
     </style>
 
-        <main class="container">
+<form method="POST" action="/bravado/<%= userPost.category %>/<%= userPost.id %>?_method=PUT">
+  <h1>Hello <%=userPost.user%>! Did you make a mistake?</h1>
 
-          <h1>Hello <%=userPost.user%>! Did you make a mistake?</h1>
-  
-         <form action="/bravado" method="POST">
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Title</label>
-            <input type="text" class="form-control" name="title" id="title" value="<%= userPost.title %>">
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Company</label>
-            <input type="text" class="form-control" name="company" id="company" value="<%= userPost.company %>">
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Category</label>
-            <select class="form-control" name="category" id="category">
-              <option value="tech">Tech</option>
-              <option value="finance">Finance</option>
-              <option value="general">General Advice</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Post</label>
-            <textarea class="form-control" name="post" id="post" rows="3"><%= userPost.post %></textarea>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Image</label>
-            <input type="text" class="form-control" name="image" id="image" value="<%= userPost.image %>">
-          </div>
-           <!-- <button class="button is-info">Submit</button> -->
-           <button class="btn btn-outline-danger" id="editBtn" type="submit">Edit Post</button>
-  
-        </form>
-  
-       </main>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" value="<%= userPost.title %> ">
+  </div>
+  <div class="form-group">
+    <label for="company">Company</label>
+    <input type="text" class="form-control" id="company" name="company" value="<%= userPost.company %> ">
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select class="form-control" id="category" name="category">
+      <option value="tech">Tech</option>
+      <option value="finance">Finance</option>
+      <option value="general">General Advice</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="post">Post</label>
+    <textarea class="form-control" type="text" id="post" name="post" rows="3"><%= userPost.post %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" class="form-control" id="image" name="image" value="<%= userPost.image %> ">
+  </div>
+  <!-- <div>
+    <input id="editBtn" type="submit" value="Edit Post">
+ </div> -->
+ <button type="submit" class="btn btn-outline-danger">Edit Post</button>
+
+</form>
 
     </body>
 </html>

@@ -8,6 +8,13 @@
     body{
         padding-bottom: 90px;
       }
+    #edit{
+        padding-left: 25px;
+        padding-top: 100px;
+    }
+    .deleteBtn{
+        padding-left: 25px;
+    }
     h2{
         text-align:right;
         padding-right: 100px;
@@ -17,13 +24,13 @@
         padding-left: 50px;
         padding-right: 50px;
     }
-    form{
+    #comment-form{
         padding-top: 50px;
         padding-left: 25px;
         padding-right: 520px;
 
     }
-    .btn{
+    #comment {
         margin-left: 800px;
     }
     .list-group{
@@ -37,8 +44,7 @@
 
     <nav class="show-navbar">
         <div>
-            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> 
-           
+             
             <!-- favorite button -->
             <!-- <% if(typeof user !== 'undefined') {%>
                 <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
@@ -47,6 +53,8 @@
             <% } %> -->
         </div>
     </nav>
+    <p></p>
+    <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit" id="edit"><button type="button" class="btn btn-warning">Edit Post</button></a>
 
     <h1 class="category-h1"><%= userSubmission.title %></h1>
     <!-- <h2 class ="category-h2">by <%= userSubmission.user %></h2> -->
@@ -58,47 +66,17 @@
     <h2 class ="category-h2">by <%= userSubmission.user %></h2>
     
 
-    <div>
+    <div class="deleteBtn">
         <p class="control">
            <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
             <% } %>
-            <!-- <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> -->
         </p>
     </div>
 
-    <!-- <% if(typeof user !== 'undefined') {%>
-    <h1>Hello, <%= user.username %></h1>
-    <% } %> -->
-
-    <!-- form for comments -->
-           <!-- <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
-   
-               <div>
-                   <input
-                     type="hidden"
-                     placeholder="Default"
-                     name="user"
-                     id="user"
-                   />
-               </div>
-       
-               <label for="post">Leave a Comment</label>
-               <div>
-                     <textarea
-                       type="text"
-                       placeholder="Say Something!"
-                       name="post"
-                       id="post"
-                     ></textarea>
-               </div>
-       
-                <button class="button is-info">Comment</button>
-            </form> -->
-
-            <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
+            <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST" id="comment-form">
                 <div>
                     <input
                       type="hidden"
@@ -114,7 +92,7 @@
                   <input type="text" class="form-control" name="post" id="post" aria-describedby="emailHelp" placeholder="Say something!">
                   <small id="emailHelp" class="form-text text-muted">Please be respectful and mindful about what you choose to comment.</small>
                 </div>
-                <button type="submit" class="btn btn-danger">Comment</button>
+                <button type="submit" class="btn btn-danger" id="comment">Comment</button>
               </form>
 
 
