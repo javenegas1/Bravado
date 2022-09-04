@@ -1,4 +1,5 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");       
+@import url( "https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 /* index / home page css */
 body{
     background-color:#ffffff;
@@ -53,7 +54,7 @@ body{
    width:100%;
    height: auto;
   }
-  .quote{
+.quote{
     font-family: 'Nova Square', cursive;
     font-size: 25px;
     background-color:lightcoral;
@@ -90,18 +91,20 @@ h1 {
 
 /* category cssssssssssssssssss */
 .category-h1 {
+    padding-top: 40px;
+    padding-left: 20px;
     font-size: 35px;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Poppins', serif;
 }
 .category-h2 {
-    font-size:20px ;
-    
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size:20px ;    
     font-family: 'Poppins', sans-serif;
 }
 .category-container {
    
     margin:25px;
-    text-align: center;
     font-family: 'Poppins', sans-serif;
 }
 /* register///login//// ------------------------------------>*/

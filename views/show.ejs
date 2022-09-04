@@ -3,18 +3,60 @@
     <%- include( 'partials/head.ejs')  %>
 <body>
     <%- include( 'partials/nav.ejs' ,)  %>
+
+<Style>
+    body{
+        padding-bottom: 90px;
+      }
+    h2{
+        text-align:right;
+        padding-right: 100px;
+    }
+    .post{
+        padding-top:15px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    form{
+        padding-top: 50px;
+        padding-left: 25px;
+        padding-right: 520px;
+
+    }
+    .btn{
+        margin-left: 800px;
+    }
+    .list-group{
+        padding-left: 75px;
+        padding-right: 450px;
+    }
+    .list-group-item{
+        padding-left: 25px;
+    }
+</Style>
+
     <nav class="show-navbar">
         <div>
             <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> 
+           
+            <!-- favorite button -->
+            <!-- <% if(typeof user !== 'undefined') {%>
+                <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
+                        <input class="button" type="submit" value="Favorite"/>                    
+                </form>
+            <% } %> -->
         </div>
     </nav>
 
     <h1 class="category-h1"><%= userSubmission.title %></h1>
-    <h2 class ="category-h2">by <%= userSubmission.user %></h2>
+    <!-- <h2 class ="category-h2">by <%= userSubmission.user %></h2> -->
 
-    <div>
+    <div class="post">
         <p><%= userSubmission.post %></p>
     </div>
+
+    <h2 class ="category-h2">by <%= userSubmission.user %></h2>
+    
 
     <div>
         <p class="control">
@@ -27,22 +69,13 @@
         </p>
     </div>
 
-    <main class="container">
-        <ul>
-            <% for(let i = 0; i<userSubmission.comments.length; i++){ %>
-                <li><%= userSubmission.comments[i].user %> - <%= userSubmission.comments[i].post %></li>
-            <% } %> 
-        </ul>
-    </main>
-
-    <% if(typeof user !== 'undefined') {%>
-    <h1>Hello, <%= user.username %>!</h1>
-    <% } %>
+    <!-- <% if(typeof user !== 'undefined') {%>
+    <h1>Hello, <%= user.username %></h1>
+    <% } %> -->
 
     <!-- form for comments -->
-           <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
+           <!-- <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
    
-               <!-- <label for="user">Username</label> -->
                <div>
                    <input
                      type="hidden"
@@ -63,8 +96,33 @@
                </div>
        
                 <button class="button is-info">Comment</button>
-            </form>
+            </form> -->
 
+            <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
+                <div>
+                    <input
+                      type="hidden"
+                      placeholder="Default"
+                      name="user"
+                      id="user"
+                    />
+                </div>
+                <div class="form-group">
+                <% if(typeof user !== 'undefined') {%>
+                    <label for="exampleInputEmail1">Hello, <%= user.username %></label>
+                <% } %>            
+                  <input type="text" class="form-control" name="post" id="post" aria-describedby="emailHelp" placeholder="Say something!">
+                  <small id="emailHelp" class="form-text text-muted">Please be respectful and mindful about what you choose to comment.</small>
+                </div>
+                <button type="submit" class="btn btn-danger">Comment</button>
+              </form>
+
+
+            <ul class="list-group list-group-flush">
+                <% for(let i = userSubmission.comments.length-1; i>=0; i--){ %>
+                    <li class="list-group-item"><%= userSubmission.comments[i].user %> - <%= userSubmission.comments[i].post %></li>
+                <% } %> 
+              </ul>
 
 </body>
 </html>
