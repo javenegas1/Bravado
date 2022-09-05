@@ -12,6 +12,10 @@ Stretch Goals --------->
 - Edit Username (possibly password) page on mongodb (Edit Profile Page)
     - replace search bar with profile drop-down menu
     - take into account how req.session.thisUser would be impacted when using edit features
-    - Stretch Goal
 - Add timestamp to comments
 - Search Bar - styling issues
+
+
+<!-- <div>
+  <%= myProfile.bookmarks[0] %>
+</div> --> manage-prfile.ejs

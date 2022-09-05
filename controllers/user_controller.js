@@ -16,7 +16,6 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try{
-        //if(!User.findOne({email: req.body.email})) return console.log('email is used')
         //hashPassword
         const userExists = await User.exists({$or: [{username:req.body.username}, { email: req.body.email }]});
         if (userExists) {
@@ -85,7 +84,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//login wrong password
+//login too
 router.get('/login_try=again', (req, res) => {
     const context = {message: 'Username and Password do not match'}
     res.render('login2.ejs', context)
@@ -133,7 +132,7 @@ router.get('/manage-profile', async (req,res) => {
         console.log(req.session.thisUser)
         const myProfile = await User.findOne({username: req.session.thisUser.username});
         const myPosts = await Review.find({user: myProfile.username})
-        context = {myPosts: myPosts}
+        context = {myPosts: myPosts, myProfile: myProfile}
         res.render('manage-profile.ejs', context)
     } catch (error){
         console.log(error)

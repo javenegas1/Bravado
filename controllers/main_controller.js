@@ -9,7 +9,6 @@ const User = require('../models/user_schema')
 
 //about us page
 router.get('/about', (req, res) => {
-    console.log(req.session.thisUser)    
     res.render('about.ejs')
 })
 
@@ -87,20 +86,23 @@ router.get('/:category/:submissionId', async (req, res) => {
 //         console.log(thisReview)
 //         console.log(thisUser)
 
-
-//         if(!thisUser.bookmarks.id.includes(thisReview._id)){
-//             await User.findOneAndUpdate(
-//                 {username: oneUser.username},
-//                 {$push: {bookmarks: thisReview}}
-//                 )
-//         }
-
-//         if(thisUser.bookmarks.id.includes(thisReview._id)){
-//             await User.findOneAndUpdate(
-//                 {username: oneUser.username},
-//                 {$pullAll: {bookmarks: thisReview}}
+//         await User.findOneAndUpdate(
+//             {username: oneUser.username},
+//             {$push: {bookmarks: thisReview}}
 //             )
-//         }
+//         // if(!thisUser.bookmarks.id.includes(thisReview._id)){
+//         //     await User.findOneAndUpdate(
+//         //         {username: oneUser.username},
+//         //         {$push: {bookmarks: thisReview}}
+//         //         )
+//         // }
+
+//         // if(thisUser.bookmarks.id.includes(thisReview._id)){
+//         //     await User.findOneAndUpdate(
+//         //         {username: oneUser.username},
+//         //         {$pullAll: {bookmarks: thisReview}}
+//         //     )
+//         // }
 //         console.log(thisUser.bookmarks)
 //         return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
 //             //render array and have submission id 
