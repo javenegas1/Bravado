@@ -12,22 +12,72 @@
     padding-left: 20px;
     font-size: 25px;
   }
-  form{
+  #deleteForm{
     padding-top: 20px;
     padding-left: 30px;
   }
-  input{
+  .deleteTrigger{
+    padding-top: 20px;
+    padding-left: 30px;
+  }
+  .btn{
+    margin-left: 15px;
+  }
+  #deleteInput{
     margin-left: 45px;
+  }
+  .list-group{
+    padding-right: 750px;
   }
 </style>
 
   <h1>Manage Profile</h1>
 
-<div>
-  <form action="/bravado/manage-profile?_method=DELETE" method="POST"> 
-    Tired of Bravado?
-    <input class="button is-danger" type="submit" value="Delete Profile"/>                    
-  </form>
+<!-- Button trigger modal -->
+<div class="deleteTrigger">
+  Tired of Bravado?
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+  Delete Profile
+</button>
+</div>  
+
+<h1>My Posts</h1>
+<main class="category-container">
+
+  <div class="list-group">
+      <% for(let i = 0; i<myPosts.length; i++){ %>
+          <a href="/bravado/<%= myPosts[i].category %>/<%= myPosts[i]._id %>" class="list-group-item list-group-item-action"> <%= myPosts[i].title %> at <%= myPosts[i].company %></a>
+      <% } %> 
+    </div>
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deleting your profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your profile? This will delete all of your posts as well.
+        <div style="float:right">
+          <!-- delete form -->
+        <form id="deleteForm" action="/bravado/manage-profile?_method=DELETE" method="POST"> 
+          <input id="deleteInput" class="btn btn-warning" type="submit" value="Delete Profile"/>                    
+        </form>
+          <!-- delete form -->
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 </body>

@@ -9,7 +9,6 @@ const User = require('../models/user_schema')
 
 //about us page
 router.get('/about', (req, res) => {
-    console.log(req.session.thisUser)    
     res.render('about.ejs')
 })
 
@@ -79,27 +78,32 @@ router.get('/:category/:submissionId', async (req, res) => {
 
 //router.post to push new 'bookmarked posts' into User.favorites array
 //favorites
-// router.post('/:category/:submissionId/bookmark', async (req, res) => {
+// router.get('/:category/:submissionId/bookmark', async (req, res) => {
 //     try{
 //         const thisReview = await Review.findById(req.params.submissionId)
 //         const oneUser = req.session.thisUser
 //         const thisUser = await User.findOne({username: oneUser.username})
-
-
-//         if(){
-//             let thisUser = await User.findOneAndUpdate(
-//                 {username: oneUser.username},
-//                 {$push: {bookmarks: thisReview}}
-//                 )
-//         }
-
-//         if(){
-//             let thisUser = await User.findOneAndUpdate(
-//                 {username: oneUser.username},
-//                 {$pop: {bookmarks: thisReview}}
-//             )
-//         }
+//         console.log(thisReview)
 //         console.log(thisUser)
+
+//         await User.findOneAndUpdate(
+//             {username: oneUser.username},
+//             {$push: {bookmarks: thisReview}}
+//             )
+//         // if(!thisUser.bookmarks.id.includes(thisReview._id)){
+//         //     await User.findOneAndUpdate(
+//         //         {username: oneUser.username},
+//         //         {$push: {bookmarks: thisReview}}
+//         //         )
+//         // }
+
+//         // if(thisUser.bookmarks.id.includes(thisReview._id)){
+//         //     await User.findOneAndUpdate(
+//         //         {username: oneUser.username},
+//         //         {$pullAll: {bookmarks: thisReview}}
+//         //     )
+//         // }
+//         console.log(thisUser.bookmarks)
 //         return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
 //             //render array and have submission id 
 //             //possibly push entire object into findOneAndUpdate, 

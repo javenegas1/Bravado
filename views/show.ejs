@@ -3,11 +3,6 @@
     <%- include( 'partials/head.ejs')  %>
 <body>
     <%- include( 'partials/nav.ejs' ,)  %>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-
  
 <Style>
     body{
@@ -56,7 +51,7 @@
     <nav class="show-navbar">
         <div>
              
-            <!-- favorite button -->
+            <!-- bookmark button -->
             <!-- <% if(typeof user !== 'undefined') {%>
                 <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
                         <input class="button" type="submit" value="Favorite"/>                    
@@ -80,12 +75,16 @@
 
     <p>
         <button id="imagebtn" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Get Inspired! Click Here
+          Click Here for Image
         </button>
       </p>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <img src="<%= userSubmission.image %>.jpg" class="post-image">
+            <% if(userSubmission.image){ %>
+                <img src="<%= userSubmission.image %>.jpg" class="post-image">
+            <% } else {%>
+                Sorry! No image for this one
+                <% } %>
         </div>
       </div>
 
@@ -93,7 +92,7 @@
         <p class="control">
            <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
-                    <input class="button is-danger" type="submit" value="Delete Post"/>                    
+                    <input class="btn btn-warning" type="submit" value="Delete Post"/>                    
             </form>
             <% } %>
         </p>

@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs')
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
+const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
 //register
@@ -15,7 +16,6 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try{
-        //if(!User.findOne({email: req.body.email})) return console.log('email is used')
         //hashPassword
         const userExists = await User.exists({$or: [{username:req.body.username}, { email: req.body.email }]});
         if (userExists) {
@@ -84,7 +84,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//login wrong password
+//login too
 router.get('/login_try=again', (req, res) => {
     const context = {message: 'Username and Password do not match'}
     res.render('login2.ejs', context)
@@ -127,13 +127,22 @@ router.get('/logout', async (req, res) => {
 
 //delete profile
 //deletes individual submission
-router.get('/manage-profile', (req,res) => {
-    console.log(req.session.thisUser)
-    res.render('manage-profile.ejs')
+router.get('/manage-profile', async (req,res) => {
+    try{
+        console.log(req.session.thisUser)
+        const myProfile = await User.findOne({username: req.session.thisUser.username});
+        const myPosts = await Review.find({user: myProfile.username})
+        context = {myPosts: myPosts, myProfile: myProfile}
+        res.render('manage-profile.ejs', context)
+    } catch (error){
+        console.log(error)
+    }
 })
 
 router.delete('/manage-profile', async (req, res) => {
     try {
+        const deletePosts = await Review.deleteMany({user: req.session.thisUser.username})
+        console.log(deletePosts)
         const deleteUser = await User.findOneAndDelete({username: req.session.thisUser.username});
         console.log(deleteUser)
         res.redirect('/bravado/logout');
