@@ -11,7 +11,6 @@ const User = require('../models/user_schema')
 //register
 router.get('/register', (req, res) => {
     res.render('register.ejs')
-    //res.send('hello')
 })
 
 router.post('/register', async (req, res) => {
@@ -36,7 +35,6 @@ router.post('/register', async (req, res) => {
 router.get('/register_try=again', (req, res) => {
     const context = {message: 'This Username or Email is already taken 😔'}
     res.render('register2.ejs', context)
-    //res.send('hello')
 })
 
 router.post('/register_try=again', async (req, res) => {
@@ -132,7 +130,9 @@ router.get('/manage-profile', async (req,res) => {
         console.log(req.session.thisUser)
         const myProfile = await User.findOne({username: req.session.thisUser.username});
         const myPosts = await Review.find({user: myProfile.username})
-        context = {myPosts: myPosts, myProfile: myProfile}
+        const markedPosts = await Review.find({_id: myProfile.bookmarks})
+        
+        context = {myPosts: myPosts, myProfile: myProfile, markedPosts: markedPosts}
         res.render('manage-profile.ejs', context)
     } catch (error){
         console.log(error)
