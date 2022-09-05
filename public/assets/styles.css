@@ -9,10 +9,7 @@ body{
 }
 
 .nav {
-    display:flex;
-    justify-content: flex-start;
-    width:100%;
-    gap:1em;
+    gap:0.5em;
 }
 
 .carousel-inner {
@@ -21,17 +18,7 @@ body{
 .carousel-inner > .carousel-item > img {
    width:100%;
    height: auto;
-   z-index: -1;
   }
-.quote{
-    font-family: 'Nova Square', cursive;
-    font-size: 25px;
-    background-color:lightcoral;
-    width: 75%;
-    text-align: center;
-    margin: auto;
-    text-shadow: 2px 2px 3px white;
-}
 
 h1 {
     font-size: 19px;
@@ -56,8 +43,6 @@ h1 {
     font-size: 25px;
 }
 
-
-
 /* category cssssssssssssssssss */
 .category-h1 {
     padding-top: 40px;
@@ -76,6 +61,7 @@ h1 {
     margin:25px;
     font-family: 'Poppins', sans-serif;
 }
+
 /* register///login//// ------------------------------------>*/
 label {
     font-family: 'Poppins', sans-serif;
@@ -111,6 +97,7 @@ label {
     display: -ms-flexbox !important;
     display: flex !important;
 }
+
 /* about us page-----------------------> */
 .top-section{
     padding-top: 80px;
@@ -154,6 +141,4 @@ section{
 font-size: 20px;
 margin-left: 10px;
 font-family: 'Poppins', sans-serif;
-
 }
-

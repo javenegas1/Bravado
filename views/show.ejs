@@ -4,6 +4,11 @@
 <body>
     <%- include( 'partials/nav.ejs' ,)  %>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+ 
 <Style>
     body{
         padding-bottom: 90px;
@@ -28,7 +33,6 @@
         padding-top: 50px;
         padding-left: 25px;
         padding-right: 520px;
-
     }
     #comment {
         margin-left: 800px;
@@ -39,6 +43,13 @@
     }
     .list-group-item{
         padding-left: 25px;
+    }
+    #imagebtn{
+        margin-left: 25px;
+    }
+    .post-image{
+        width: 50%;
+        height:50%
     }
 </Style>
 
@@ -54,9 +65,11 @@
         </div>
     </nav>
     <p></p>
-    <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit" id="edit"><button type="button" class="btn btn-warning">Edit Post</button></a>
-
-    <h1 class="category-h1"><%= userSubmission.title %></h1>
+    <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
+        <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit" id="edit"><button type="button" class="btn btn-warning">Edit Post</button></a>
+    <% } %>
+    
+    <h1 class="category-h1"><%= userSubmission.title %> - at <%= userSubmission.company %></h1>
     <!-- <h2 class ="category-h2">by <%= userSubmission.user %></h2> -->
 
     <div class="post">
@@ -64,7 +77,17 @@
     </div>
 
     <h2 class ="category-h2">by <%= userSubmission.user %></h2>
-    
+
+    <p>
+        <button id="imagebtn" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Get Inspired! Click Here
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <img src="<%= userSubmission.image %>.jpg" class="post-image">
+        </div>
+      </div>
 
     <div class="deleteBtn">
         <p class="control">

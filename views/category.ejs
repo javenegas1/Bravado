@@ -17,7 +17,7 @@
 
         <div class="list-group">
             <% for(let i = 0; i<findReview.length; i++){ %>
-                <a href="/bravado/<%= category %>/<%= findReview[i].id %>" class="list-group-item list-group-item-action"> <%= findReview[i].title %> - by <%= findReview[i].user %> </a>
+                <a href="/bravado/<%= category %>/<%= findReview[i].id %>" class="list-group-item list-group-item-action"> <%= findReview[i].title %> at <%= findReview[i].company %> - by <%= findReview[i].user %> </a>
             <% } %> 
           </div>
 
