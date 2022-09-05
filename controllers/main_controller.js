@@ -19,7 +19,6 @@ router.get('/newSubmission', async (req, res) => {
         const context = {oneUser: req.session.thisUser}
         res.render('new.ejs', context)
     } catch {
-        //res.send('Create an Account first!')
         res.redirect('/bravado/register')
     }
 })
@@ -74,46 +73,32 @@ router.get('/:category/:submissionId', async (req, res) => {
     }
 })
 
-//-------------------------------------------------------------->
-
-//router.post to push new 'bookmarked posts' into User.favorites array
-//favorites
-// router.get('/:category/:submissionId/bookmark', async (req, res) => {
-//     try{
-//         const thisReview = await Review.findById(req.params.submissionId)
-//         const oneUser = req.session.thisUser
-//         const thisUser = await User.findOne({username: oneUser.username})
-//         console.log(thisReview)
-//         console.log(thisUser)
-
-//         await User.findOneAndUpdate(
-//             {username: oneUser.username},
-//             {$push: {bookmarks: thisReview}}
-//             )
-//         // if(!thisUser.bookmarks.id.includes(thisReview._id)){
-//         //     await User.findOneAndUpdate(
-//         //         {username: oneUser.username},
-//         //         {$push: {bookmarks: thisReview}}
-//         //         )
-//         // }
-
-//         // if(thisUser.bookmarks.id.includes(thisReview._id)){
-//         //     await User.findOneAndUpdate(
-//         //         {username: oneUser.username},
-//         //         {$pullAll: {bookmarks: thisReview}}
-//         //     )
-//         // }
-//         console.log(thisUser.bookmarks)
-//         return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
-//             //render array and have submission id 
-//             //possibly push entire object into findOneAndUpdate, 
-//     } catch (error) {
-//         console.log(error)
-//         res.send(error)
-//     }
-// })
-
-//-------------------------------------------------------------->
+//bookmark
+router.get('/:category/:submissionId/bookmark', async (req, res) => {
+    try{
+        const thisReview = await Review.findById(req.params.submissionId)
+        const oneUser = req.session.thisUser
+        const thisUser = await User.findOne({username: oneUser.username})
+        console.log(thisReview)
+        const postBookmark = String(req.params.submissionId)
+        if(thisUser.bookmarks.includes(postBookmark)){
+            await User.findOneAndUpdate(
+                {username: oneUser.username},
+                {$pullAll: {bookmarks: [postBookmark] }}
+            )
+        } else {
+            await User.findOneAndUpdate(
+                {username: oneUser.username},
+                {$push: {bookmarks: postBookmark}}
+            )
+        }
+        console.log(thisUser.bookmarks)
+        return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+})
 
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
@@ -150,8 +135,6 @@ router.delete('/:category/:submissionId', async (req, res) => {
 //Edit and Update individual submissions
 router.get('/:category/:submissionId/edit', async (req, res) => {
     try {
-        //refactor req.session.thisUser.username, for multiple cases for
-        //when user is not one who posted article
         const updatePost = await Review.findById(req.params.submissionId);
         if(updatePost.user == req.session.thisUser.username) return res.render('edit.ejs', { userPost: updatePost })
         console.log(updatePost);

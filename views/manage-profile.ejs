@@ -29,6 +29,9 @@
   .list-group{
     padding-right: 750px;
   }
+  #bookmarks{
+    padding-right: 500px;
+  }
 </style>
 
   <h1>Manage Profile</h1>
@@ -79,5 +82,15 @@
   </div>
 </div>
 
+<h1>Bookmarks</h1>
+<main class="category-container">
+
+  <div id="bookmarks" class="list-group">
+      <% for(let i = 0; i<markedPosts.length; i++){ %>
+          <a href="/bravado/<%= markedPosts[i].category %>/<%= markedPosts[i]._id %>" class="list-group-item list-group-item-action"> <%= markedPosts[i].title %> at <%= markedPosts[i].company %> - by <%= markedPosts[i].user %></a>
+      <% } %> 
+    </div>
+
+</main>
 
 </body>

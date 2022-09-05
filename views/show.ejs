@@ -46,19 +46,27 @@
         width: 50%;
         height:50%
     }
+    .show-navbar{
+        margin-top:10px;
+    }
+    #bookmark{
+        font-size: 37px;
+        margin-right: 45px;
+        text-decoration: none;
+        float:right
+    }
+    #bookmark:hover{
+        font-size: 40px;
+    }
 </Style>
 
     <nav class="show-navbar">
         <div>
-             
             <!-- bookmark button -->
-            <!-- <% if(typeof user !== 'undefined') {%>
-                <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
-                        <input class="button" type="submit" value="Favorite"/>                    
-                </form>
-            <% } %> -->
+            <a id="bookmark" href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/bookmark"> 🔖 </a>
         </div>
     </nav>
+
     <p></p>
     <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
         <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit" id="edit"><button type="button" class="btn btn-warning">Edit Post</button></a>
