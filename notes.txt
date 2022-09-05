@@ -3,7 +3,6 @@ Admin Account
  - password - admin
 
 Debugging / Additional Features -------------->
-- Search Bar
 - Option to bookmark post
     - route to bookmarks - would most likely need to push into array
     within user schema, render as list on bookmarks page
@@ -15,3 +14,4 @@ Stretch Goals --------->
     - take into account how req.session.thisUser would be impacted when using edit features
     - Stretch Goal
 - Add timestamp to comments
+- Search Bar - styling issues

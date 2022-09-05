@@ -5,7 +5,7 @@
 
         <%- include( 'partials/nav.ejs' )  %>
     <style>
-        .btn{
+        #quotebtn{
             margin-top:5vh;
             margin-left:5vh
         }
@@ -62,11 +62,11 @@
                 
             </div>
 
-            <!-- random quote -->
-            <% let randomQuote = quotes[Math.floor(Math.random() * (quotes.length-1))] %>
+        <!-- random quote -->
+        <% let randomQuote = quotes[Math.floor(Math.random() * (quotes.length-1))] %>
 
         <p>
-            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button id="quotebtn" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               Get Inspired! Click Here
             </button>
           </p>
@@ -102,9 +102,5 @@
           </div>
           </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    
     </body>
 

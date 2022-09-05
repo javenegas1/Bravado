@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
 <html lang="en">
   <%- include( 'partials/head.ejs')  %>
@@ -15,7 +12,7 @@
     padding-left: 20px;
     font-size: 25px;
   }
-  form{
+  #deleteForm{
     padding-top: 20px;
     padding-left: 30px;
   }
@@ -26,7 +23,7 @@
   .btn{
     margin-left: 15px;
   }
-  input{
+  #deleteInput{
     margin-left: 45px;
   }
   .list-group{
@@ -69,8 +66,8 @@
         Are you sure you want to delete your profile? This will delete all of your posts as well.
         <div style="float:right">
           <!-- delete form -->
-        <form action="/bravado/manage-profile?_method=DELETE" method="POST"> 
-          <input class="btn btn-warning" type="submit" value="Delete Profile"/>                    
+        <form id="deleteForm" action="/bravado/manage-profile?_method=DELETE" method="POST"> 
+          <input id="deleteInput" class="btn btn-warning" type="submit" value="Delete Profile"/>                    
         </form>
           <!-- delete form -->
         </div>  
