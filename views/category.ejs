@@ -3,16 +3,24 @@
     <%- include( 'partials/head.ejs')  %>
 <body>
     <%- include( 'partials/nav.ejs' ,)  %>
+    <style>
+        .list-group{
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    </style>
 
-    <h1 class=" category-h1"><%= category.charAt(0).toUpperCase() + category.slice(1) %> Reviews</h1>
-    <h2 class="category-h2">Help with interviews in the Tech Space</h2>
+    <h1 class=" category-h1"><%= category.charAt(0).toUpperCase() + category.slice(1) %> Posts</h1>
+    <h2 class="category-h2">Help with interviews in <%= category.charAt(0).toUpperCase() + category.slice(1) %></h2>
 
     <main class="category-container">
-        <div>
+
+        <div class="list-group">
             <% for(let i = 0; i<findReview.length; i++){ %>
-                <a href="/bravado/<%= category %>/<%= findReview[i].id %>"><%= findReview[i].user %> <%= findReview[i].title %></a>
+                <a href="/bravado/<%= category %>/<%= findReview[i].id %>" class="list-group-item list-group-item-action"> <%= findReview[i].title %> at <%= findReview[i].company %> - by <%= findReview[i].user %> </a>
             <% } %> 
-        </div>
+          </div>
+
     </main>
 </body>
 </html>

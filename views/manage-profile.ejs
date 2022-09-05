@@ -1,13 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <%- include( 'partials/head.ejs')  %>
 
 <body>
   <%- include( 'partials/nav.ejs')  %>
 
+<style>
+  h1{
+    padding-top: 40px;
+    padding-left: 20px;
+    font-size: 25px;
+  }
+  form{
+    padding-top: 20px;
+    padding-left: 30px;
+  }
+  input{
+    margin-left: 45px;
+  }
+</style>
 
   <h1>Manage Profile</h1>
 
-  <form action="/bravado/manage-profile?_method=DELETE" method="POST">
+<div>
+  <form action="/bravado/manage-profile?_method=DELETE" method="POST"> 
+    Tired of Bravado?
     <input class="button is-danger" type="submit" value="Delete Profile"/>                    
-  </form> 
+  </form>
+</div>
+
+</body>

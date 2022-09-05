@@ -66,11 +66,39 @@ router.post('/login', async (req, res) => {
     try{
         //match login information with user database
         const authUser = await User.findOne({username: req.body.username})
-        if(!authUser) return console.log('user not found')
+        if(!authUser) return res.redirect("/bravado/login_try=again");
 
         //match password with hashpassword
         const validPassword = await bcrypt.compare(req.body.password, authUser.password)
-        if(!validPassword) return console.log('invalid user')
+        if(!validPassword) return res.redirect("/bravado/login_try=again");
+
+        req.session.thisUser = {
+            id: authUser._id,
+            username: authUser.username,
+        };
+        console.log(req.session)
+        res.redirect('/')
+    } catch(error){
+        console.log(error)
+        res.send(error)
+    }
+})
+
+//login wrong password
+router.get('/login_try=again', (req, res) => {
+    const context = {message: 'Username and Password do not match'}
+    res.render('login2.ejs', context)
+})
+
+router.post('/login_try=again', async (req, res) => {
+    try{
+        //match login information with user database
+        const authUser = await User.findOne({username: req.body.username})
+        if(!authUser) return res.redirect("/bravado/login_try=again");
+
+        //match password with hashpassword
+        const validPassword = await bcrypt.compare(req.body.password, authUser.password)
+        if(!validPassword) return res.redirect("/bravado/login_try=again");
 
         req.session.thisUser = {
             id: authUser._id,

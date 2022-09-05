@@ -3,68 +3,127 @@
     <%- include( 'partials/head.ejs')  %>
 <body>
     <%- include( 'partials/nav.ejs' ,)  %>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+ 
+<Style>
+    body{
+        padding-bottom: 90px;
+      }
+    #edit{
+        padding-left: 25px;
+        padding-top: 100px;
+    }
+    .deleteBtn{
+        padding-left: 25px;
+    }
+    h2{
+        text-align:right;
+        padding-right: 100px;
+    }
+    .post{
+        padding-top:15px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    #comment-form{
+        padding-top: 50px;
+        padding-left: 25px;
+        padding-right: 520px;
+    }
+    #comment {
+        margin-left: 800px;
+    }
+    .list-group{
+        padding-left: 75px;
+        padding-right: 450px;
+    }
+    .list-group-item{
+        padding-left: 25px;
+    }
+    #imagebtn{
+        margin-left: 25px;
+    }
+    .post-image{
+        width: 50%;
+        height:50%
+    }
+</Style>
+
     <nav class="show-navbar">
         <div>
-            <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit"> Edit Post </a> 
+             
+            <!-- favorite button -->
+            <!-- <% if(typeof user !== 'undefined') {%>
+                <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
+                        <input class="button" type="submit" value="Favorite"/>                    
+                </form>
+            <% } %> -->
         </div>
     </nav>
+    <p></p>
+    <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
+        <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/edit" id="edit"><button type="button" class="btn btn-warning">Edit Post</button></a>
+    <% } %>
+    
+    <h1 class="category-h1"><%= userSubmission.title %> - at <%= userSubmission.company %></h1>
+    <!-- <h2 class ="category-h2">by <%= userSubmission.user %></h2> -->
 
-    <h1 class="category-h1"><%= userSubmission.title %></h1>
-    <h2 class ="category-h2">by <%= userSubmission.user %></h2>
-
-    <div>
+    <div class="post">
         <p><%= userSubmission.post %></p>
     </div>
 
-    <div>
+    <h2 class ="category-h2">by <%= userSubmission.user %></h2>
+
+    <p>
+        <button id="imagebtn" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Get Inspired! Click Here
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <img src="<%= userSubmission.image %>.jpg" class="post-image">
+        </div>
+      </div>
+
+    <div class="deleteBtn">
         <p class="control">
            <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
                     <input class="button is-danger" type="submit" value="Delete Post"/>                    
             </form>
             <% } %>
-            <!-- <a href="/bravado/<%= userSubmission.category %>/<%= userSubmission.id %>/comment"> Add a Comment </a> -->
         </p>
     </div>
 
-    <main class="container">
-        <ul>
-            <% for(let i = 0; i<userSubmission.comments.length; i++){ %>
-                <li><%= userSubmission.comments[i].user %> - <%= userSubmission.comments[i].post %></li>
-            <% } %> 
-        </ul>
-    </main>
+            <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST" id="comment-form">
+                <div>
+                    <input
+                      type="hidden"
+                      placeholder="Default"
+                      name="user"
+                      id="user"
+                    />
+                </div>
+                <div class="form-group">
+                <% if(typeof user !== 'undefined') {%>
+                    <label for="exampleInputEmail1">Hello, <%= user.username %></label>
+                <% } %>            
+                  <input type="text" class="form-control" name="post" id="post" aria-describedby="emailHelp" placeholder="Say something!">
+                  <small id="emailHelp" class="form-text text-muted">Please be respectful and mindful about what you choose to comment.</small>
+                </div>
+                <button type="submit" class="btn btn-danger" id="comment">Comment</button>
+              </form>
 
-    <% if(typeof user !== 'undefined') {%>
-    <h1>Hello, <%= user.username %>!</h1>
-    <% } %>
 
-    <!-- form for comments -->
-           <form action="/bravado/<%= category %>/<%= submissionId %>" method="POST">
-   
-               <!-- <label for="user">Username</label> -->
-               <div>
-                   <input
-                     type="hidden"
-                     placeholder="Default"
-                     name="user"
-                     id="user"
-                   />
-               </div>
-       
-               <label for="post">Leave a Comment</label>
-               <div>
-                     <textarea
-                       type="text"
-                       placeholder="Say Something!"
-                       name="post"
-                       id="post"
-                     ></textarea>
-               </div>
-       
-                <button class="button is-info">Comment</button>
-            </form>
-
+            <ul class="list-group list-group-flush">
+                <% for(let i = userSubmission.comments.length-1; i>=0; i--){ %>
+                    <li class="list-group-item"><%= userSubmission.comments[i].user %> - <%= userSubmission.comments[i].post %></li>
+                <% } %> 
+              </ul>
 
 </body>
 </html>

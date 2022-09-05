@@ -56,8 +56,10 @@ app.get('/', (req, res) => {
     res.redirect('/bravado')
 })
 
+//localhost:
 // app.listen(4000, () => {
 //   console.log(`listening on port: 4000`)
 // });
 
+//heroku
 app.listen(process.env.PORT || 4000);

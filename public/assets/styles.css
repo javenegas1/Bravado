@@ -1,67 +1,24 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");       
+@import url( "https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 /* index / home page css */
 body{
     background-color:#ffffff;
     color:rgb(65, 65, 65);
-    padding:0;
+    /* padding:0; */
+    padding-bottom: 90px;
 }
-
 
 .nav {
-    display:flex;
-    justify-content: flex-start;
-    width:100%;
-    gap:1em;
+    gap:0.5em;
 }
 
-.navbar{ 
-    background-color:gainsboro;
-    padding-top: 11px;
-    padding-bottom: 11px;  
-}
-.nav input[type=text] {
-    margin-left:auto;
-    margin-right: 10px;
-    width: 175px;
-    border: 1px solid black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-  }
-.nav a{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    background-color: gainsboro;
-    text-decoration:solid;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 2px 2px 3px whitesmoke;
-}
-.nav a:hover {
-    background-color: azure;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 3px white;
-}
-.nav a:active{
-    background-color: crimson;
-}
 .carousel-inner {
-    max-height: 50vh;
+    max-height: 75vh;
 }
 .carousel-inner > .carousel-item > img {
    width:100%;
    height: auto;
   }
-  .quote{
-    font-family: 'Nova Square', cursive;
-    font-size: 25px;
-    background-color:lightcoral;
-    width: 75%;
-    text-align: center;
-    margin: auto;
-    text-shadow: 2px 2px 3px white;
-}
 
 h1 {
     font-size: 19px;
@@ -70,40 +27,41 @@ h1 {
 .row  {
     margin:auto;
     text-align: center;
-    
-    
 }
 .container-marketing {
     display:flex;
+    padding-top: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .advertisment {
     font-size: 30px;
     margin-top: 70px;
     font-family: 'Poppins', sans-serif;
-
 }
 .mb-0 {
     font-size: 25px;
 }
 
-
-
 /* category cssssssssssssssssss */
 .category-h1 {
+    padding-top: 40px;
+    padding-left: 20px;
     font-size: 35px;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Poppins', serif;
 }
 .category-h2 {
-    font-size:20px ;
-    
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size:20px ;    
     font-family: 'Poppins', sans-serif;
 }
 .category-container {
    
     margin:25px;
-    text-align: center;
     font-family: 'Poppins', sans-serif;
 }
+
 /* register///login//// ------------------------------------>*/
 label {
     font-family: 'Poppins', sans-serif;
@@ -139,11 +97,18 @@ label {
     display: -ms-flexbox !important;
     display: flex !important;
 }
+
 /* about us page-----------------------> */
+.top-section{
+    padding-top: 80px;
+}
+section{
+    padding-left: 40px;
+    padding-right: 40px;
+}
 .title {
     font-size: 30px;
-    text-decoration:underline;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Poppins', serif;
 }
 .about {
     display:flex;
@@ -153,7 +118,7 @@ label {
 .about img {
     display: block;
     margin-left: auto;
-    border-radius: 20%;
+    border-radius:10%;
     }
 .about p {
     font-size: 20px;
@@ -163,20 +128,17 @@ label {
     margin:30px;
     text-align: right;
     font-size: 30px;
-    text-decoration:underline;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Poppins', serif;
 }
 .goal {
     display:flex;
    
 }
 .goal img {
-    border-radius: 20%;
+    border-radius: 10%;
 }
 .goal p{
 font-size: 20px;
 margin-left: 10px;
 font-family: 'Poppins', sans-serif;
-
 }
-

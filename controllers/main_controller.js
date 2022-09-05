@@ -77,15 +77,30 @@ router.get('/:category/:submissionId', async (req, res) => {
 
 //-------------------------------------------------------------->
 
-//router.post to push new 'favorited posts' into User.favorites array
-// router.post('/:category/:submissionId', async (req, res) => {
+//router.post to push new 'bookmarked posts' into User.favorites array
+//favorites
+// router.post('/:category/:submissionId/bookmark', async (req, res) => {
 //     try{
 //         const thisReview = await Review.findById(req.params.submissionId)
 //         const oneUser = req.session.thisUser
-//         const thisUser = await User.findOneAndUpdate(
-//             {username: oneUser.username},
-//             {$push: {favorites: req.params.submissionId}} //push title and category, make array of objects
+//         const thisUser = await User.findOne({username: oneUser.username})
+
+
+//         if(){
+//             let thisUser = await User.findOneAndUpdate(
+//                 {username: oneUser.username},
+//                 {$push: {bookmarks: thisReview}}
+//                 )
+//         }
+
+//         if(){
+//             let thisUser = await User.findOneAndUpdate(
+//                 {username: oneUser.username},
+//                 {$pop: {bookmarks: thisReview}}
 //             )
+//         }
+//         console.log(thisUser)
+//         return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
 //             //render array and have submission id 
 //             //possibly push entire object into findOneAndUpdate, 
 //     } catch (error) {
@@ -95,7 +110,6 @@ router.get('/:category/:submissionId', async (req, res) => {
 // })
 
 //-------------------------------------------------------------->
-
 
 //post comments to page
 router.post('/:category/:submissionId', async (req, res) => {
