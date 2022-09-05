@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs')
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
+const Review = require('../models/bravado_schema')
 const User = require('../models/user_schema')
 
 //register
@@ -127,13 +128,22 @@ router.get('/logout', async (req, res) => {
 
 //delete profile
 //deletes individual submission
-router.get('/manage-profile', (req,res) => {
-    console.log(req.session.thisUser)
-    res.render('manage-profile.ejs')
+router.get('/manage-profile', async (req,res) => {
+    try{
+        console.log(req.session.thisUser)
+        const myProfile = await User.findOne({username: req.session.thisUser.username});
+        const myPosts = await Review.find({user: myProfile.username})
+        context = {myPosts: myPosts}
+        res.render('manage-profile.ejs', context)
+    } catch (error){
+        console.log(error)
+    }
 })
 
 router.delete('/manage-profile', async (req, res) => {
     try {
+        const deletePosts = await Review.deleteMany({user: req.session.thisUser.username})
+        console.log(deletePosts)
         const deleteUser = await User.findOneAndDelete({username: req.session.thisUser.username});
         console.log(deleteUser)
         res.redirect('/bravado/logout');

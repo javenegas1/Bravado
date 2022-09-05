@@ -56,7 +56,7 @@
     <nav class="show-navbar">
         <div>
              
-            <!-- favorite button -->
+            <!-- bookmark button -->
             <!-- <% if(typeof user !== 'undefined') {%>
                 <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=POST" method="POST">
                         <input class="button" type="submit" value="Favorite"/>                    
@@ -80,12 +80,16 @@
 
     <p>
         <button id="imagebtn" class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Get Inspired! Click Here
+          Click Here for Image
         </button>
       </p>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <img src="<%= userSubmission.image %>.jpg" class="post-image">
+            <% if(userSubmission.image){ %>
+                <img src="<%= userSubmission.image %>.jpg" class="post-image">
+            <% } else {%>
+                Sorry! No image for this one
+                <% } %>
         </div>
       </div>
 
@@ -93,7 +97,7 @@
         <p class="control">
            <% if(oneUser.username == userSubmission.user || oneUser.username == 'admin') {%>
             <form action="/bravado/<%= userSubmission.category %>/<%= userSubmission._id %>?_method=DELETE" method="POST">
-                    <input class="button is-danger" type="submit" value="Delete Post"/>                    
+                    <input class="btn btn-warning" type="submit" value="Delete Post"/>                    
             </form>
             <% } %>
         </p>

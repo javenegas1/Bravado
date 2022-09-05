@@ -79,27 +79,29 @@ router.get('/:category/:submissionId', async (req, res) => {
 
 //router.post to push new 'bookmarked posts' into User.favorites array
 //favorites
-// router.post('/:category/:submissionId/bookmark', async (req, res) => {
+// router.get('/:category/:submissionId/bookmark', async (req, res) => {
 //     try{
 //         const thisReview = await Review.findById(req.params.submissionId)
 //         const oneUser = req.session.thisUser
 //         const thisUser = await User.findOne({username: oneUser.username})
+//         console.log(thisReview)
+//         console.log(thisUser)
 
 
-//         if(){
-//             let thisUser = await User.findOneAndUpdate(
+//         if(!thisUser.bookmarks.id.includes(thisReview._id)){
+//             await User.findOneAndUpdate(
 //                 {username: oneUser.username},
 //                 {$push: {bookmarks: thisReview}}
 //                 )
 //         }
 
-//         if(){
-//             let thisUser = await User.findOneAndUpdate(
+//         if(thisUser.bookmarks.id.includes(thisReview._id)){
+//             await User.findOneAndUpdate(
 //                 {username: oneUser.username},
-//                 {$pop: {bookmarks: thisReview}}
+//                 {$pullAll: {bookmarks: thisReview}}
 //             )
 //         }
-//         console.log(thisUser)
+//         console.log(thisUser.bookmarks)
 //         return res.redirect(`/bravado/${req.params.category}/${req.params.submissionId}`)
 //             //render array and have submission id 
 //             //possibly push entire object into findOneAndUpdate, 

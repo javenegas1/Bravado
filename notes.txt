@@ -3,12 +3,15 @@ Admin Account
  - password - admin
 
 Debugging / Additional Features -------------->
+- Search Bar
+- Option to bookmark post
+    - route to bookmarks - would most likely need to push into array
+    within user schema, render as list on bookmarks page
+    - includes button under individual posts to add to bookmarks array
+
+Stretch Goals --------->
 - Edit Username (possibly password) page on mongodb (Edit Profile Page)
     - replace search bar with profile drop-down menu
     - take into account how req.session.thisUser would be impacted when using edit features
-- Option to like and/or favorite a post
-    - route to favorites - would most likely need to push into a favorites array
-    within user schema, render as list on favorites page
-    - includes button under individual posts to add to fav array
+    - Stretch Goal
 - Add timestamp to comments
-- As long as any user is logged in they can edit any post, ----> debugging

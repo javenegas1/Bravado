@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
 <html lang="en">
   <%- include( 'partials/head.ejs')  %>
@@ -16,18 +19,68 @@
     padding-top: 20px;
     padding-left: 30px;
   }
+  .deleteTrigger{
+    padding-top: 20px;
+    padding-left: 30px;
+  }
+  .btn{
+    margin-left: 15px;
+  }
   input{
     margin-left: 45px;
+  }
+  .list-group{
+    padding-right: 750px;
   }
 </style>
 
   <h1>Manage Profile</h1>
 
-<div>
-  <form action="/bravado/manage-profile?_method=DELETE" method="POST"> 
-    Tired of Bravado?
-    <input class="button is-danger" type="submit" value="Delete Profile"/>                    
-  </form>
+<!-- Button trigger modal -->
+<div class="deleteTrigger">
+  Tired of Bravado?
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+  Delete Profile
+</button>
+</div>  
+
+<h1>My Posts</h1>
+<main class="category-container">
+
+  <div class="list-group">
+      <% for(let i = 0; i<myPosts.length; i++){ %>
+          <a href="/bravado/<%= myPosts[i].category %>/<%= myPosts[i]._id %>" class="list-group-item list-group-item-action"> <%= myPosts[i].title %> at <%= myPosts[i].company %></a>
+      <% } %> 
+    </div>
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deleting your profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your profile? This will delete all of your posts as well.
+        <div style="float:right">
+          <!-- delete form -->
+        <form action="/bravado/manage-profile?_method=DELETE" method="POST"> 
+          <input class="btn btn-warning" type="submit" value="Delete Profile"/>                    
+        </form>
+          <!-- delete form -->
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 </body>
