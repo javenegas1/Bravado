@@ -4,7 +4,7 @@
 body{
     background-color:#ffffff;
     color:rgb(65, 65, 65);
-    padding-bottom: 90px;
+    
 }
 
 .nav {
@@ -41,6 +41,14 @@ h1 {
 .mb-0 {
     font-size: 25px;
 }
+.footer-box {
+    background-color:rgb(150, 150, 150);
+    width: 100%;
+    margin-top: 30px;
+    
+}
+
+
 
 /* category cssssssssssssssssss */
 .category-h1 {
