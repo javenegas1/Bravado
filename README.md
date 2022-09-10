@@ -34,5 +34,8 @@ To follow user story, we need to think about the purpose of the site. A user can
 - Create Admin account for supervisory purposes
 
 Teamwork:
-Juan Venegas: Designed much of the backend. Created routes and functionality of much of the site
-Sohaib Ali: Designed most of the HTML and CSS. Much of the design came from his creative mind 
+Juan Venegas: Designed much of the backend
+Sohaib Ali: Designed most of the HTML and CSS
+
+Check out our project! Deployed throught Heroku -
+https://bravado-project.herokuapp.com/bravado/
